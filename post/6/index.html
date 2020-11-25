@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Tomcat添加SSL证书实现安全 | 卷毛</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1606300088168">
+<link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+将网站域名申请SSL证书，并把证书配置在Tomcat中，实现进入网站即可跳转https，实现网站安全。
+
+1.下载证书并放置到tomcat安装目录下
+
+
+在tomcat安装目录下创建一个cert文件夹，将下载的证书中一个jks后缀的证书和..." />
+    <meta name="keywords" content="Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zoengzihaam.github.io">
+        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1606300088168" class="site-logo">
+        <h1 class="site-title">卷毛</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/life" class="site-nav">
+            生活
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有撤退可言。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Tomcat添加SSL证书实现安全</h2>
+            <div class="post-date">2020-06-04</div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p>将网站域名申请SSL证书，并把证书配置在Tomcat中，实现进入网站即可跳转https，实现网站安全。</p>
+</blockquote>
+<h2 id="1下载证书并放置到tomcat安装目录下">1.下载证书并放置到tomcat安装目录下</h2>
+<ul>
+<li>
+<p>在tomcat安装目录下创建一个cert文件夹，将下载的证书中一个jks后缀的证书和一个txt后缀的密码文件上传到tomcat安装目录下</p>
+<p>mkdir /usr/local/tomcat/apache-tomcat-8.5.51/cert</p>
+</li>
+</ul>
+<h2 id="2配置serverxml">2.配置server.xml</h2>
+<ul>
+<li>打开server.xml文件，设置配置文件</li>
+</ul>
+<pre><code class="language-shell">vim /usr/local/tomcat/apache-tomcat-8.5.51/conf/server.xml
+</code></pre>
+<ul>
+<li>找到Connector标签将8080端口后面的 redirectPort=&quot;8443&quot; 改为</li>
+</ul>
+<pre><code class="language-shell">redirectPort=&quot;443&quot;
+</code></pre>
+<ul>
+<li>
+<p>找到下面SSL/TLS标签把注释的Connector标签打开并添加certificateKeystorePassword属性，里面的值填写下载的密码txt文件里面的内容。</p>
+<p><Connector port="443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+             maxThreads="150" SSLEnabled="true"><br>
+<SSLHostConfig><br>
+<Certificate certificateKeystoreFile="cert/证书名.jks" certificateKeystorePassword="zp02e4i10k117u5" type="RSA" /><br>
+</SSLHostConfig><br>
+</Connector></p>
+</li>
+</ul>
+<h2 id="3配置webxml文件">3.配置web.xml文件</h2>
+<ul>
+<li>打开tomcat安装目录下的conf文件夹中的web.xml文件</li>
+</ul>
+<pre><code class="language-shell">vim /usr/local/tomcat/apache-tomcat-8.5.51/conf/web.xml
+</code></pre>
+<ul>
+<li>拉到最下面，找到welcome-file-list标签，在后面添加以下内容</li>
+</ul>
+<pre><code class="language-xml">&lt;login-config&gt;
+    &lt;!-- Authorization setting for SSL --&gt;  
+    &lt;auth-method&gt;CLIENT-CERT&lt;/auth-method&gt;  
+    &lt;realm-name&gt;Client Cert Users-only Area&lt;/realm-name&gt;  
+&lt;/login-config&gt;  
+&lt;security-constraint&gt;  
+    &lt;!-- Authorization setting for SSL --&gt;  
+    &lt;web-resource-collection &gt;  
+        &lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;  
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;  
+    &lt;/web-resource-collection&gt;  
+    &lt;user-data-constraint&gt;  
+        &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;  
+    &lt;/user-data-constraint&gt;  
+&lt;/security-constraint&gt;
+</code></pre>
+<ul>
+<li>
+<p>保存退出，将tomcat关闭再次开启。</p>
+<pre><code>  **进入bin目录**
+</code></pre>
+</li>
+</ul>
+<pre><code class="language-shell">cd /usr/local/tomcat/apache-tomcat-8.5.51/bin
+</code></pre>
+<p>​		<strong>关闭tomcat</strong></p>
+<pre><code class="language-shell">./shutdown.sh
+</code></pre>
+<p>​		<strong>启动tomcat</strong></p>
+<pre><code class="language-shell">./startup.sh
+</code></pre>
+<p>再次访问网站即可成功安全配置SSL证书到tomcat服务器上。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zoengzihaam.github.io/post/5/">
+                  <h3 class="post-title">
+                    使用PicGo+GitHub打造最稳定可靠的免费图床
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '049ef8314a6b421eb956',
+        clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
+        repo: 'GitalkDatabase',
+        owner: 'zoengzihaam',
+        admin: ['zoengzihaam'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

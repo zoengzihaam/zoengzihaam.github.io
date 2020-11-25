@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>使用PicGo+GitHub打造最稳定可靠的免费图床 | 卷毛</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1606300088168">
+<link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="创建自己的GitHub图床
+1.创建GitHub图床之前，需要注册/登陆GitHub账号
+申请GitHub账号并登陆到GitHub官网。
+2.创建Repository
+在个人选项栏中点击New repository
+
+添加Repositor..." />
+    <meta name="keywords" content="图床" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zoengzihaam.github.io">
+        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1606300088168" class="site-logo">
+        <h1 class="site-title">卷毛</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/life" class="site-nav">
+            生活
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有撤退可言。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">使用PicGo+GitHub打造最稳定可靠的免费图床</h2>
+            <div class="post-date">2020-06-04</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="创建自己的github图床">创建自己的GitHub图床</h2>
+<h3 id="1创建github图床之前需要注册登陆github账号">1.创建GitHub图床之前，需要注册/登陆GitHub账号</h3>
+<p>申请<code>GitHub</code>账号并登陆到<code>GitHub</code>官网。</p>
+<h3 id="2创建repository">2.创建Repository</h3>
+<p>在个人选项栏中点击<code>New repository</code></p>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091239.jpg" alt="" loading="lazy"></figure>
+<p>添加<code>Repository</code>相关的一些设置<br>
+<img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091147.jpg" alt="" loading="lazy"></p>
+<h3 id="3生成一个token用于操作github-repository">3.生成一个Token用于操作GitHub Repository</h3>
+<p>在个人栏中选择<code>Settings</code><br>
+<img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091251.jpg" alt="" loading="lazy"></p>
+<p>点击左侧的<code>Developer settings</code></p>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091304.jpg" alt="" loading="lazy"></figure>
+<p>点击<code>Personal access tokens</code>为上面创建的<code>Repository</code>创建一个Token</p>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091314.jpg" alt="" loading="lazy"></figure>
+<p>创建一个新的<code>Token</code>，并配置信息。</p>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091324.jpg" alt="" loading="lazy"></figure>
+<p>创建成功复制生成的<code>Token</code>，<strong>这里注意</strong>：生成要提前复制保存，关闭了就看不到了，只能再次生成一次Token。</p>
+<h2 id="配置picgo">配置PicGo</h2>
+<h3 id="1下载运行picgo">1.下载运行PicGo</h3>
+<p>在官网下载<a href="https://molunerfinn.com/PicGo/">PicGo</a>，根据自己的操作系统进行下载。</p>
+<h3 id="2配置图床">2.配置图床</h3>
+<p>按照下图进行<code>GitHub</code>图床配置</p>
+<figure data-type="image" tabindex="5"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed@master/images/20200509091333.jpg" alt="" loading="lazy"></figure>
+<h3 id="3快捷键及相关配置">3.快捷键及相关配置</h3>
+<h3 id="4其他相关">4.其他相关</h3>
+<h2 id="使用jsdelivr-cdn-加速-github-仓库的图片">使用jsDelivr CDN 加速 Github 仓库的图片</h2>
+<ul>
+<li>原自定义域名：</li>
+</ul>
+<p><code>https://raw.githubusercontent.com/用户名/仓库名/master/images</code></p>
+<ul>
+<li>加速后自定义域名</li>
+</ul>
+<p><code>https://cdn.jsdelivr.net/gh/用户名/仓库名@master</code></p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zoengzihaam.github.io/tag/C3mBXuY7J/" class="tag">
+                    图床
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zoengzihaam.github.io/post/4/">
+                  <h3 class="post-title">
+                    Chrome浏览器查找当前的页面线程，并使用CE加载。
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '049ef8314a6b421eb956',
+        clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
+        repo: 'GitalkDatabase',
+        owner: 'zoengzihaam',
+        admin: ['zoengzihaam'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

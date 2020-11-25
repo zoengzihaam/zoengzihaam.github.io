@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Linux下安装Java配置环境 | 卷毛</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1606300088168">
+<link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="JDK的安装
+
+
+准备工作：安装依赖的环境
+yum -y install glibc.i686
+yum -y install libaio.so.1 libgcc_s.so.1 libstdc++.so.6
+yum -y install g..." />
+    <meta name="keywords" content="Linux" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zoengzihaam.github.io">
+        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1606300088168" class="site-logo">
+        <h1 class="site-title">卷毛</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/life" class="site-nav">
+            生活
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有撤退可言。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Linux下安装Java配置环境</h2>
+            <div class="post-date">2020-05-20</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="jdk的安装">JDK的安装</h2>
+<ol>
+<li>
+<p>准备工作：安装依赖的环境</p>
+<pre><code class="language-shell">yum -y install glibc.i686
+yum -y install libaio.so.1 libgcc_s.so.1 libstdc++.so.6
+yum -y install gcc-c++
+yum -y install libaio*
+</code></pre>
+</li>
+<li>
+<p>检查之前是否安装JDK ，安装过则卸载</p>
+<pre><code class="language-shell">rpm -qa | grep -i jdk 参数-i忽略大小写
+</code></pre>
+<p>​如果查询结果为空，则当前Linux未安装虚拟机<br>
+如果查询有结果，则执行下面命令，进行卸载jdk</p>
+<pre><code class="language-shell">rpm -e --nodeps 程序名称
+</code></pre>
+</li>
+<li>
+<p>安装JDK</p>
+</li>
+<li>
+<p>创建JDK的安装路径</p>
+<pre><code class="language-shell">mkdir /usr/local/java
+</code></pre>
+</li>
+<li>
+<p>上传JDK安装包</p>
+</li>
+<li>
+<p>解压 tar -zxvf 安装包 -C 指定目录</p>
+</li>
+<li>
+<p>配置环境变量(在Linux下 使用:来分隔)</p>
+</li>
+</ol>
+<p>vim /etc/profile 在末尾添加如下消息</p>
+<pre><code>export JAVA_HOME=/usr/local/jdk/jdk1.8.0_241
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$JAVA_HOME/bin:$PATH
+</code></pre>
+<ol start="5">
+<li>重新加载环境变量配置文件</li>
+</ol>
+<pre><code>~~~shell
+source /etc/profile
+~~~
+</code></pre>
+<ol start="6">
+<li>测试是否配置成功</li>
+</ol>
+<pre><code>~~~shell
+java -version
+~~~
+</code></pre>
+<h2 id="tomcat的安装">Tomcat的安装</h2>
+<ol>
+<li>
+<p>检查之前是否安装tomcat，安装过则卸载</p>
+<p>rpm -qa | grep -i tomcat<br>
+如果查询结果为空，则当前Linux未安装虚拟机<br>
+如果查询有结果，则执行下面命令，进行卸载tomcat<br>
+rpm -e --nodeps tomcat</p>
+</li>
+<li>
+<p>上传tomcat的安装文件</p>
+<p>将tomcat的压缩包上传到根目录下</p>
+</li>
+<li>
+<p>创建tomcat的安装路径(一般软件安装在usr下的local里面)</p>
+<p>mkdir /usr/local/tomcat</p>
+</li>
+<li>
+<p>解压tomcat</p>
+<p>tar -zxvf apache-tomcat-8.5.51.tar.gz -C /usr/local/tomcat</p>
+</li>
+<li>
+<p>配置环境变量</p>
+<p>vim /etc/profile 添加CATALINA和PATH路径</p>
+<p>export CATALINA_HOME=/usr/local/tomcat/apache-tomcat-8.5.51<br>
+export PATH=<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi><mi>A</mi><mi>T</mi><mi>A</mi><mi>L</mi><mi>I</mi><mi>N</mi><msub><mi>A</mi><mi>H</mi></msub><mi>O</mi><mi>M</mi><mi>E</mi><mi mathvariant="normal">/</mi><mi>b</mi><mi>i</mi><mi>n</mi><mo>:</mo></mrow><annotation encoding="application/x-tex">CATALINA_HOME/bin:</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="mord mathdefault">A</span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span><span class="mord mathdefault">A</span><span class="mord mathdefault">L</span><span class="mord mathdefault" style="margin-right:0.07847em;">I</span><span class="mord mathdefault" style="margin-right:0.10903em;">N</span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.32833099999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.08125em;">H</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord">/</span><span class="mord mathdefault">b</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span></span></span></span>PATH</p>
+</li>
+<li>
+<p>重新加载环境变量配置文件</p>
+<p>source /etc/profile</p>
+</li>
+<li>
+<p>启动tomcat</p>
+<ol>
+<li>
+<p>进入tomcat安装路径的bin目录下</p>
+<p>cd /usr/local/tomcat/apache-tomcat-8.5.51/bin</p>
+</li>
+<li>
+<p>执行启动命令</p>
+<p>./startup.sh</p>
+</li>
+<li>
+<p>本机远程访问测试是否启动成功</p>
+</li>
+</ol>
+</li>
+<li>
+<p>将tomcat服务加入开机启动项。</p>
+<ol>
+<li>
+<p>首先将tomcat安装目录下bin目录中的startup.sh文件链接到/etc/init.d/下并起名为tomcat(etc目录下的init.d实际目录是etc/rc.d/init.d)</p>
+<p>ln -s /usr/local/tomcat/apache-tomcat-8.5.51/bin/startup.sh /etc/init.d/tomcat</p>
+</li>
+</ol>
+<p>如果权限不够，则使用以下代码赋予最高权限</p>
+<pre><code> chmod 777 tomcat
+</code></pre>
+<ol start="2">
+<li>
+<p>通过chkconfig命令将tomcat服务加入到自启动服务项中。(在任何目录下都可以执行以下命令)</p>
+<pre><code> chkconfig --add tomcat
+</code></pre>
+</li>
+</ol>
+<p>注意：服务名称tomcat就是我们将startup.sh链接到/etc/init.d/时重命名的名称。</p>
+<p>如果出现以下代码</p>
+<pre><code> service tomcat does not support chkconfig
+</code></pre>
+<p>那么重新打开tomcat文件配置权限信息</p>
+<pre><code> vim /etc/init.d/tomcat
+</code></pre>
+<p>在头部#！/bin/sh下添加</p>
+<pre><code> #chkconfig:2345 10 90
+</code></pre>
+<p>在下方添加JDK以及tomcat的环境变量</p>
+<pre><code> export JAVA_HOME=/usr/local/jdk/jdk1.8.0_241
+ export CATALINA_HOME=/usr/local/tomcat/apache-tomcat-8.5.51
+</code></pre>
+<ol start="3">
+<li>
+<p>查看是否添加成功</p>
+<pre><code> chkconfig --list tomcat
+</code></pre>
+</li>
+</ol>
+<p>如果2，3，4，5显示为on 则添加成功，若失败，则重新执行一次。</p>
+</li>
+</ol>
+<h2 id="mysql的安装">Mysql的安装</h2>
+<ol>
+<li>
+<p>检查之前是否安装mysql，安装过则卸载</p>
+<pre><code> rpm -qa | grep -i mysql
+ 如果已经安装了库文件，应该先卸载，不然会出现覆盖错误。注意卸载时使用了--nodeps选项，忽略了依赖关系
+ rpm -e --nodeps 程序名称
+</code></pre>
+</li>
+<li>
+<p>上传mysql的安装文件</p>
+</li>
+<li>
+<p>创建mysql的安装路径</p>
+<pre><code> mkdir /usr/local/mysql
+</code></pre>
+</li>
+<li>
+<p>解压mysql</p>
+</li>
+<li>
+<p>添加mysql用户组和mysql用户，用于设置mysql安装目录文件所有者和所属组。</p>
+<pre><code> groupadd mysql
+ useradd -r -g mysql mysql
+</code></pre>
+</li>
+<li>
+<p>进入mysql解压目录，并更改所属的组和用户。</p>
+<pre><code> cd /usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64
+ chown -R mysql .
+ chgrp -R mysql .
+</code></pre>
+</li>
+</ol>
+<p>注意：不要忘记mysql后的 '.'，代表所有目录。</p>
+<ol start="7">
+<li>
+<p>执行mysql_install_db脚本，对mysql中的data目录进行初始化并创建一些系统表格。注意mysql服务进程mysqld运行时会访问data目录，所以必须由启动mysqld进程的用户(就是我们之前设置的mysql用户)执行这个脚本，或者用root执行，但是加上参数--user=mysql。</p>
+<pre><code> scripts/mysql_install_db --user=mysql
+</code></pre>
+</li>
+</ol>
+<p>注意：如果出现以下错误</p>
+<pre><code>FATAL ERROR: please install the following Perl modules before executing scripts/mysql_install_db:
+Data::Dumper
+</code></pre>
+<p>则需要先安装安装autoconf库</p>
+<pre><code>yum -y install autoconf
+</code></pre>
+<ol start="8">
+<li>
+<p>将mysql/目录下除了data/目录的所有文件，改回root用户所有，mysql用户只需作为mysql/data/目录下所有文件的所有者。</p>
+<pre><code> chown -R root .
+ chown -R mysql data
+</code></pre>
+</li>
+</ol>
+<p>注意：同样，别忘记root后面的'.'</p>
+<ol start="9">
+<li>
+<p>复制配置文件到etc目录下</p>
+<pre><code> my-default.cnf文件在support-files目录下
+ cp my-default.cnf /etc/my.cnf
+</code></pre>
+</li>
+</ol>
+<p>并查看my.cnf配置，修改basedir</p>
+<pre><code>cd /etc/
+vim my.cnf
+找到basedir修改为如下内容
+basedir =/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64
+</code></pre>
+<ol start="10">
+<li>
+<p>将mysqld服务加入开机启动项。</p>
+<ol>
+<li>
+<p>首先需要将support-files目录下的mysql.server服务脚本复制到/etc/init.d/，并重命名为mysqld。</p>
+<pre><code> cp mysql.server /etc/init.d/mysqld
+</code></pre>
+</li>
+<li>
+<p>通过chkconfig命令将mysqld服务加入到自启动服务项中。(在任何目录下都可以执行以下命令)</p>
+<pre><code> chkconfig --add mysqld
+</code></pre>
+</li>
+</ol>
+<p>注意：服务名称mysqld就是我们将mysql.server复制到/etc/init.d/时重命名的名称。</p>
+<ol start="3">
+<li>
+<p>查看是否添加成功</p>
+<pre><code> chkconfig --list mysqld
+</code></pre>
+</li>
+</ol>
+<p>如果2，3，4，5显示为on 则添加成功，若失败，则重新执行一次。</p>
+</li>
+<li>
+<p>启动mysql</p>
+<pre><code>service mysqld start
+</code></pre>
+<p>如果出现SUCCESS 则代表启动成功</p>
+<p>如果出现以下错误error</p>
+<pre><code>ERROR! The server quit without updating PID file (/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64/data/quality-unicorns-2.localdomain.pid).
+</code></pre>
+<p>则使用以下代码将data文件夹重新赋予权限，然后重新启动mysql</p>
+<pre><code>chown -R mysql.mysql /usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64/data
+
+service mysqld start
+</code></pre>
+</li>
+<li>
+<p>运行客户端程序mysql查看是否连接到mysqld</p>
+<p>进入mysql的安装目录下的bin目录中，执行以下代码即可登录mysql</p>
+<pre><code>./mysql
+</code></pre>
+<p>或</p>
+<pre><code>/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64/bin/mysql
+</code></pre>
+</li>
+<li>
+<p>设置mysql初始密码并登录</p>
+<p>如果刚安装号mysql，超级用户root是没有密码，所以直接回车即可进入到mysql中</p>
+<p>修改密码</p>
+<p>定位到你的mysql安装目录bin目录下执行以下代码将密码设置为123456</p>
+<pre><code>./mysqladmin -u root password 123456
+</code></pre>
+<p>再次登录mysql，则需要输入完整的登录才能成功登录</p>
+<pre><code>./mysql -u root -p 
+</code></pre>
+<p>回车再输入上面设置的密码即可</p>
+</li>
+<li>
+<p>为了避免每次都输入mysql的全路径，添加mysql的环境变量</p>
+<p>打开系统环境变量配置文件</p>
+<pre><code>vim /etc/profile
+</code></pre>
+<p>添加下面两行命令</p>
+<pre><code>export MYSQL_HOME=/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64
+export PATH=$PATH:$MYSQL_HOME/bin
+</code></pre>
+<p>重新加载环境变量文件</p>
+<pre><code>source /etc/profile
+</code></pre>
+</li>
+</ol>
+<p>################</p>
+<h2 id="vim的安装">vim的安装</h2>
+<pre><code>yum -y install vim*
+</code></pre>
+<h2 id="linux常用命令">Linux常用命令</h2>
+<pre><code>cp 复制文件(如果复制目录文件需要加上-r)
+rm 删除文件(如果删除目录文件需要加上-r，如果强制删除需要加上-f)
+vi/vim 编辑文件(文件编辑器):命令模式-&gt;编辑模式-&gt;底行模式
+clear 清屏
+cat 查看文件
+tar 压缩文件或解压文件(-zxvf)
+tail(如果你想查看文件的后10行，可以使用tail命令，如：tail -10 /etc/passwd 或 tail -n 10 /etc/passwd tail -f /var/log/messages 参数-f使tail不停的去读最新的内容，这样有实时监视的效果 用Ctrl+c来终止！)：当文件较大时使用，查看文件的后几行。
+reboot 重启虚拟机
+halt 关机
+ifconfig 查看本机ip地址
+ps -ef 查看进程号 ps -aux
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="tag">
+                    Linux
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zoengzihaam.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '049ef8314a6b421eb956',
+        clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
+        repo: 'GitalkDatabase',
+        owner: 'zoengzihaam',
+        admin: ['zoengzihaam'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

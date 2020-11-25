@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>GateWay自定义全局GlobalFilter | 卷毛</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1606300088168">
+<link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="GateWay自定义全局GlobalFilter
+1.实现两个接口
+
+
+GlobalFilter
+用于自定义过滤器，例如进行Token验证
+
+
+Ordered
+Spring提供了Ordered这个接口，来处理相同接口实现类的优先级问题。
+
+..." />
+    <meta name="keywords" content="spring" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zoengzihaam.github.io">
+        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1606300088168" class="site-logo">
+        <h1 class="site-title">卷毛</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/life" class="site-nav">
+            生活
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      没有撤退可言。
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">GateWay自定义全局GlobalFilter</h2>
+            <div class="post-date">2020-07-06</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="gateway自定义全局globalfilter">GateWay自定义全局GlobalFilter</h1>
+<h2 id="1实现两个接口">1.实现两个接口</h2>
+<ul>
+<li>
+<p>GlobalFilter</p>
+<p>用于自定义过滤器，例如进行Token验证</p>
+</li>
+<li>
+<p>Ordered</p>
+<p>Spring提供了Ordered这个接口，来处理相同接口实现类的优先级问题。</p>
+</li>
+</ul>
+<pre><code class="language-Java">import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.core.Ordered;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+import java.util.Date;
+
+@Component
+@Slf4j
+public class MyLogGateWayFilter implements GlobalFilter, Ordered {
+
+    @Override
+    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
+        //打印输出信息
+        log.info(&quot;************come in MyLogGateWayFilter&quot; + new Date());
+
+        //获取request中的参数
+        String name = exchange.getRequest().getQueryParams().getFirst(&quot;name&quot;);
+        //判断参数的信息
+        if(name ==null){
+            log.info(&quot;************用户名为null，非法用户，/(ㄒoㄒ)/~~&quot;);
+            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
+            return exchange.getResponse().setComplete();
+        }
+
+        return chain.filter(exchange);
+    }
+
+    @Override
+    public int getOrder() {
+        return 0;
+    }
+}
+</code></pre>
+<h2 id="2-使用cmd验证">2. 使用CMD验证</h2>
+<ul>
+<li>
+<p>遵循过滤器中的规则</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706185828.png" alt="image-20200706185828629" loading="lazy"></figure>
+</li>
+<li>
+<p>不遵循过滤器中的规则</p>
+<figure data-type="image" tabindex="2"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706185856.png" alt="image-20200706185856027" loading="lazy"></figure>
+</li>
+</ul>
+<h2 id="3网页端测试">3.网页端测试</h2>
+<ul>
+<li>
+<p>遵循过滤器中的规则</p>
+<figure data-type="image" tabindex="3"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706185952.png" alt="image-20200706185952065" loading="lazy"></figure>
+</li>
+<li>
+<p>不遵循过滤器中的规则</p>
+<figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706190016.png" alt="image-20200706190016823" loading="lazy"></figure>
+</li>
+</ul>
+<p>结论：自定义Filter类似SpringMVC中的Filter，GlobalGilter 全局过滤器接口与 GatewayFilter 网关过滤器接口具有相同的方法定义。全局过滤器是一系列特殊的过滤器，会根据条件应用到所有路由中。网关过滤器是更细粒度的过滤器，作用于指定的路由中。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://zoengzihaam.github.io/tag/hR2Q3InCJ/" class="tag">
+                    spring
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zoengzihaam.github.io/post/12/">
+                  <h3 class="post-title">
+                    微服务中使用GateWay实现保护、增强和控制对于 API 服务的访问。
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '049ef8314a6b421eb956',
+        clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
+        repo: 'GitalkDatabase',
+        owner: 'zoengzihaam',
+        admin: ['zoengzihaam'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
