@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zoengzihaam.github.io</id>
     <title>卷毛</title>
-    <updated>2020-11-25T10:30:59.851Z</updated>
+    <updated>2020-11-25T10:36:18.356Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zoengzihaam.github.io"/>
     <link rel="self" href="https://zoengzihaam.github.io/atom.xml"/>
@@ -10,15 +10,6 @@
     <logo>https://zoengzihaam.github.io/images/avatar.png</logo>
     <icon>https://zoengzihaam.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 卷毛</rights>
-    <entry>
-        <title type="html"><![CDATA[生活]]></title>
-        <id>https://zoengzihaam.github.io/post/18/</id>
-        <link href="https://zoengzihaam.github.io/post/18/">
-        </link>
-        <updated>2020-11-25T10:21:00.000Z</updated>
-        <content type="html"><![CDATA[<p>🌈测试</p>
-]]></content>
-    </entry>
     <entry>
         <title type="html"><![CDATA[docker开机自启]]></title>
         <id>https://zoengzihaam.github.io/post/16/</id>
@@ -1967,6 +1958,87 @@ flush privileges;
 </code></pre>
 <p>然后输入密码即可。</p>
 <p>root是第1点设置的用户名，密码也是第1点设置的密码</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Tomcat添加SSL证书实现安全]]></title>
+        <id>https://zoengzihaam.github.io/post/6/</id>
+        <link href="https://zoengzihaam.github.io/post/6/">
+        </link>
+        <updated>2020-06-04T01:28:04.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>将网站域名申请SSL证书，并把证书配置在Tomcat中，实现进入网站即可跳转https，实现网站安全。</p>
+</blockquote>
+<h2 id="1下载证书并放置到tomcat安装目录下">1.下载证书并放置到tomcat安装目录下</h2>
+<ul>
+<li>
+<p>在tomcat安装目录下创建一个cert文件夹，将下载的证书中一个jks后缀的证书和一个txt后缀的密码文件上传到tomcat安装目录下</p>
+<p>mkdir /usr/local/tomcat/apache-tomcat-8.5.51/cert</p>
+</li>
+</ul>
+<h2 id="2配置serverxml">2.配置server.xml</h2>
+<ul>
+<li>打开server.xml文件，设置配置文件</li>
+</ul>
+<pre><code class="language-shell">vim /usr/local/tomcat/apache-tomcat-8.5.51/conf/server.xml
+</code></pre>
+<ul>
+<li>找到Connector标签将8080端口后面的 redirectPort=&quot;8443&quot; 改为</li>
+</ul>
+<pre><code class="language-shell">redirectPort=&quot;443&quot;
+</code></pre>
+<ul>
+<li>
+<p>找到下面SSL/TLS标签把注释的Connector标签打开并添加certificateKeystorePassword属性，里面的值填写下载的密码txt文件里面的内容。</p>
+<p><Connector port="443" protocol="org.apache.coyote.http11.Http11NioProtocol"
+             maxThreads="150" SSLEnabled="true"><br>
+<SSLHostConfig><br>
+<Certificate certificateKeystoreFile="cert/证书名.jks" certificateKeystorePassword="zp02e4i10k117u5" type="RSA" /><br>
+</SSLHostConfig><br>
+</Connector></p>
+</li>
+</ul>
+<h2 id="3配置webxml文件">3.配置web.xml文件</h2>
+<ul>
+<li>打开tomcat安装目录下的conf文件夹中的web.xml文件</li>
+</ul>
+<pre><code class="language-shell">vim /usr/local/tomcat/apache-tomcat-8.5.51/conf/web.xml
+</code></pre>
+<ul>
+<li>拉到最下面，找到welcome-file-list标签，在后面添加以下内容</li>
+</ul>
+<pre><code class="language-xml">&lt;login-config&gt;
+    &lt;!-- Authorization setting for SSL --&gt;  
+    &lt;auth-method&gt;CLIENT-CERT&lt;/auth-method&gt;  
+    &lt;realm-name&gt;Client Cert Users-only Area&lt;/realm-name&gt;  
+&lt;/login-config&gt;  
+&lt;security-constraint&gt;  
+    &lt;!-- Authorization setting for SSL --&gt;  
+    &lt;web-resource-collection &gt;  
+        &lt;web-resource-name &gt;SSL&lt;/web-resource-name&gt;  
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;  
+    &lt;/web-resource-collection&gt;  
+    &lt;user-data-constraint&gt;  
+        &lt;transport-guarantee&gt;CONFIDENTIAL&lt;/transport-guarantee&gt;  
+    &lt;/user-data-constraint&gt;  
+&lt;/security-constraint&gt;
+</code></pre>
+<ul>
+<li>
+<p>保存退出，将tomcat关闭再次开启。</p>
+<pre><code>  **进入bin目录**
+</code></pre>
+</li>
+</ul>
+<pre><code class="language-shell">cd /usr/local/tomcat/apache-tomcat-8.5.51/bin
+</code></pre>
+<p>​		<strong>关闭tomcat</strong></p>
+<pre><code class="language-shell">./shutdown.sh
+</code></pre>
+<p>​		<strong>启动tomcat</strong></p>
+<pre><code class="language-shell">./startup.sh
+</code></pre>
+<p>再次访问网站即可成功安全配置SSL证书到tomcat服务器上。</p>
 ]]></content>
     </entry>
 </feed>
