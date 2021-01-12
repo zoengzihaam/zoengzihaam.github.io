@@ -2,14 +2,127 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zoengzihaam.github.io</id>
     <title>卷毛</title>
-    <updated>2020-11-25T16:01:01.986Z</updated>
+    <updated>2021-01-12T06:33:11.227Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zoengzihaam.github.io"/>
     <link rel="self" href="https://zoengzihaam.github.io/atom.xml"/>
     <subtitle>没有撤退可言。</subtitle>
     <logo>https://zoengzihaam.github.io/images/avatar.png</logo>
     <icon>https://zoengzihaam.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, 卷毛</rights>
+    <rights>All rights reserved 2021, 卷毛</rights>
+    <entry>
+        <title type="html"><![CDATA[NetflixDNS解锁]]></title>
+        <id>https://zoengzihaam.github.io/post/netflixdns-jie-suo/</id>
+        <link href="https://zoengzihaam.github.io/post/netflixdns-jie-suo/">
+        </link>
+        <updated>2021-01-12T06:32:04.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="netflixdns解锁">NetflixDNS解锁</h1>
+<blockquote>
+<p>由于Netflix的版权问题，使用一般的代理服务跨区看剧时会被 Netflix 检测到并阻止，当我们使用的vps不能观看Netflix的时候，我们可以选择购买便宜大碗的vps来辅助解锁不能查看Netflix的vps。</p>
+</blockquote>
+<h2 id="准备工作">准备工作</h2>
+<p>正式开始之前，我们需要做一些基本的准备，你至少需要这些东西：</p>
+<ul>
+<li>支持 Netflix 的代理服务</li>
+<li>不支持 Netflix 的代理服务</li>
+<li>Netflix订阅</li>
+</ul>
+<p><strong>就目前而言，美区应该是目前剧集资源最丰富的地区，但是根据本人亲测，美区的资源并不符合国人的观看风格，个人比较推荐香港。</strong></p>
+<h2 id="使用dnsmasq解锁netflix奈飞流媒体服务">使用Dnsmasq解锁Netflix（奈飞）流媒体服务</h2>
+<p>这里借助了<code>萌精灵</code></p>
+<p>的脚本实现，这里感谢萌精灵。</p>
+<p><strong>安装方法：</strong></p>
+<p>支持 Netflix 的代理vps安装</p>
+<pre><code class="language-shell">wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh &amp;&amp; bash dnsmasq_sniproxy.sh -f
+</code></pre>
+<p><strong>卸载方法：</strong></p>
+<pre><code class="language-shell">wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh &amp;&amp; bash dnsmasq_sniproxy.sh -u
+</code></pre>
+<p><strong>使用方法：</strong></p>
+<p>将<code>不支持 Netflix 的代理VPS</code>的DNS地址修改为<code>支持 Netflix 的代理vps</code>的IP就可以了，如果不能用，记得只保留一个DNS地址试一下。</p>
+<p>⚠️：防止滥用，建议不要随意公布IP地址，或使用防火墙做好限制工作。</p>
+<p><strong>调试排错：</strong></p>
+<ul>
+<li>确认sniproxy有效运行</li>
+</ul>
+<p>重启sni命令：systemctl restart sniproxy</p>
+<p>如果sni不在运行，可检查配置/etc/sniproxy.conf，避免ss、nginx或者其他程序监听80,443，可将其配置文件的80更改为801等。 443端口必须给sni监听放行，查看：netstat -tlunp|grep 443</p>
+<ul>
+<li>确认防火墙放行443,53</li>
+</ul>
+<p>调试可直接关闭防火墙 systemctl stop firewalld.service</p>
+<p>阿里云/谷歌云/AWS等外部防火墙放行 可通过其他服务器 telnet vpsip 53 以及 telnet vpsip 443 进行测试</p>
+<ul>
+<li>解析域名</li>
+</ul>
+<p>尝试用其他服务器配置完毕dns后，解析域名：nslookup <a href="https://www.moeelf.com/tag/netflix">netflix</a>.com 判断IP是否是NETFLIX代理机器IP 如果不存在nslookup命令，CENTOS安装：yum install -y bind-utils，DEBIAN安装：apt-get -y install dnsutils</p>
+<h2 id="一键脚本修改推荐修改方式">一键脚本修改推荐修改方式：</h2>
+<blockquote>
+<p>一键脚本很多都会自带dns服务，会影响流媒体的dns解锁。</p>
+</blockquote>
+<p><strong>修改方式：</strong></p>
+<pre><code class="language-shell">vi /etc/v2ray/config.json
+</code></pre>
+<p>找到DNS</p>
+<pre><code class="language-shell">&quot;dns&quot;: {
+        &quot;servers&quot;: [
+            {
+                &quot;address&quot;: &quot;xxx.xxx.xxx.xxx&quot;,     //此处为支持 Netflix 的代理VPS
+                &quot;port&quot;: 53,
+                &quot;domains&quot;: [
+                    &quot;domain:netflix.com&quot;,
+                    &quot;domain:netflix.net&quot;,
+                    &quot;domain:nflximg.net&quot;,
+                    &quot;domain:nflxvideo.net&quot;,
+                    &quot;domain:nflxso.net&quot;,
+                    &quot;domain:nflxext.com&quot;
+                ]
+            },
+            &quot;localhost&quot;
+        ]
+    }
+</code></pre>
+<p>修改配置完成以后，请重启你的V2RAY服务，或是重启VPS。</p>
+<h2 id="使用分流让不同的流媒体走不同的dns">使用分流，让不同的流媒体走不同的DNS</h2>
+<p><strong>修改方法：</strong></p>
+<pre><code class="language-shell">&quot;dns&quot;: {
+        &quot;servers&quot;: [
+            {
+                &quot;address&quot;: &quot;支持Netflix的代理VPS&quot;,
+                &quot;port&quot;: 53,
+                &quot;domains&quot;: [
+                    &quot;domain:netflix.com&quot;,
+                    &quot;domain:netflix.net&quot;,
+                    &quot;domain:nflximg.net&quot;,
+                    &quot;domain:nflxvideo.net&quot;,
+                    &quot;domain:nflxso.net&quot;,
+                    &quot;domain:nflxext.com&quot;
+                ]
+            },
+            {
+                &quot;address&quot;: &quot;支持的代理VPS&quot;,
+                &quot;port&quot;: 53,
+                &quot;domains&quot;: [
+                    &quot;domain:gamer2-cds.cdn.hinet.net&quot;,
+                    &quot;domain:gamer-cds.cdn.hinet.net&quot;,
+                    &quot;domain:gamer.com.tw&quot;,
+                    &quot;domain:i2.bahamut.com.tw&quot;,
+                    &quot;domain:app-measurement.com&quot;
+                ]
+            },
+            {
+                &quot;address&quot;: &quot;支持的代理VPS&quot;,
+                &quot;port&quot;: 53,
+                &quot;domains&quot;: [
+                    &quot;domain:bilibili.com&quot;
+                ]
+            },
+            &quot;localhost&quot;
+        ]
+    }
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ROS双软路由使用jump实现公网端口转发]]></title>
         <id>https://zoengzihaam.github.io/post/19/</id>
@@ -1987,41 +2100,6 @@ slaves的连接和同步请求，那么该slave作为了链条中下一个的mas
 <p>由于所有的写操作都是先在Master上操作，然后同步更新到Slave上，所以从Master同步到Slave机器有一定的延迟，当系统很繁忙的时候，延迟问题会更加严重，Slave机器数量的增加也会使这个问题更加严重。</p>
 </li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Linux系统下实现远程连接MySQL数据库]]></title>
-        <id>https://zoengzihaam.github.io/post/7/</id>
-        <link href="https://zoengzihaam.github.io/post/7/">
-        </link>
-        <updated>2020-06-04T05:09:47.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>MySQL默认root用户只能本地访问，不能远程连接管理mysql数据库。</p>
-</blockquote>
-<h2 id="步骤">步骤</h2>
-<h3 id="1-在服务器端开启远程访问">1. 在服务器端开启远程访问</h3>
-<p>首先进入mysql数据库，然后输入下面两个命令：</p>
-<pre><code>grant all privileges on *.* to 'root'@'%' identified by '123456';
-flush privileges;
-</code></pre>
-<p>第一个*是数据库，可以改成允许访问的数据库名称</p>
-<p>第二个 是数据库的表名称，代表允许访问任意的表</p>
-<p>root代表远程登录使用的用户名，可以自定义</p>
-<p>%代表允许任意ip登录，如果你想指定特定的IP，可以把%替换掉就可以了</p>
-<p>password代表远程登录时使用的密码，可以自定义</p>
-<p>flush privileges;这是让权限立即生效</p>
-<h3 id="2-修改mycnf配置文件">2. 修改my.cnf配置文件</h3>
-<p>这个是mysql的配置文件，如果你无标题文章找不到在哪里的话，可以输入<kbd>find /* -name my.cnf</kbd>找到<br>
-通过vim编辑该文件，找到<kbd>bind-address    = 127.0.0.1</kbd>这一句，然后在前面加个#号注释掉，保存退出。</p>
-<h3 id="3-重启服务">3. 重启服务</h3>
-<pre><code>	service mysql restart
-</code></pre>
-<h3 id="4-在本地远程连接">4. 在本地远程连接</h3>
-<p>在终端输入：</p>
-<pre><code>mysql -h 服务器ip地址 -P 3306 -u root -p
-</code></pre>
-<p>然后输入密码即可。</p>
-<p>root是第1点设置的用户名，密码也是第1点设置的密码</p>
 ]]></content>
     </entry>
 </feed>
