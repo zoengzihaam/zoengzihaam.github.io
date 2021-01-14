@@ -1,111 +1,125 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>SSM框架IDEA的配置 | 卷毛</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610436468302">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    SSM框架IDEA的配置 | 卷毛
+</title>
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610626105614">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://zoengzihaam.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
 
-  
+                    
+                            
+</head>
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
-    <meta name="description" content="
-用于IDEA搭建SSM框架的配置环境
-
-1. 设置IDEA的maven项目的架构设置
-设置Project Structure，将所缺的Sources，Tests，Resources配置完成，以及web.xml的版本更改为3.1。
-2. 创..." />
-    <meta name="keywords" content="spring" />
-  </head>
-  <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://zoengzihaam.github.io">
-        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1610436468302" class="site-logo">
-        <h1 class="site-title">卷毛</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://zoengzihaam.github.io">
+                <img class="avatar" src="https://zoengzihaam.github.io/images/avatar.png?v=1610626105614" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    卷毛
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      没有撤退可言。
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">SSM框架IDEA的配置</h2>
-            <div class="post-date">2020-06-02</div>
-            
-            <div class="post-content" v-pre>
-              <blockquote>
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            SSM框架IDEA的配置
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-06-02</time>
+                            
+                                <a href="https://zoengzihaam.github.io/tag/hR2Q3InCJ/" class="post-tag i-tag
+                            i-tag-other_3">
+                            #spring
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <blockquote>
 <p>用于IDEA搭建SSM框架的配置环境</p>
 </blockquote>
 <h3 id="1-设置idea的maven项目的架构设置">1. 设置IDEA的maven项目的架构设置</h3>
@@ -430,82 +444,132 @@ jdbc.password=
 &lt;/web-app&gt;
 </code></pre>
 
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://zoengzihaam.github.io/tag/hR2Q3InCJ/" class="tag">
-                    spring
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://zoengzihaam.github.io/post/2/">
-                  <h3 class="post-title">
-                    在虚拟机 VMware 下安装 Linux
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
-
-              
-            
-
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://zoengzihaam.github.io/post/2/">
+                                <h3 class="post-title">
+                                    在虚拟机 VMware 下安装 Linux
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#1-%E8%AE%BE%E7%BD%AEidea%E7%9A%84maven%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%9E%B6%E6%9E%84%E8%AE%BE%E7%BD%AE">1. 设置IDEA的maven项目的架构设置</a></li>
+<li><a href="#2-%E5%88%9B%E5%BB%BAssm%E6%A1%86%E6%9E%B6%E7%9A%84package%E4%BB%A5%E5%8F%8A%E5%AF%B9%E5%BA%94%E7%9A%84%E5%8C%85">2. 创建ssm框架的package，以及对应的包</a></li>
+<li><a href="#3-%E5%9C%A8resources%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%AD%E5%88%9B%E5%BB%BAspring%E4%BB%A5%E5%8F%8Amybatis%E6%96%87%E4%BB%B6%E5%A4%B9%E7%94%A8%E4%BA%8E%E5%AD%98%E6%94%BE%E5%AF%B9%E5%BA%94%E7%9A%84%E6%96%87%E4%BB%B6">3. 在resources文件夹中创建spring以及mybatis文件夹，用于存放对应的文件</a></li>
+<li><a href="#4-webapp%E4%B8%8B%E7%9A%84%E9%85%8D%E7%BD%AE">4. webapp下的配置</a></li>
+<li><a href="#5-%E9%85%8D%E7%BD%AEssm%E6%A1%86%E6%9E%B6%E6%89%80%E7%BC%BA%E5%B0%91%E7%9A%84%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE">5. 配置SSM框架所缺少的环境配置</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AEpomxml%E6%96%87%E4%BB%B6%E4%B8%AD%E7%BC%BA%E5%B0%91%E7%9A%84ssm%E6%A1%86%E6%9E%B6%E4%BE%9D%E8%B5%96%E7%9A%84jar%E5%8C%85">配置pom.xml文件中缺少的ssm框架依赖的jar包</a></li>
+<li><a href="#1%E9%85%8D%E7%BD%AEmybatis-configxml%E7%9A%84%E5%86%85%E5%AE%B9">1.配置mybatis-config.xml的内容</a></li>
+<li><a href="#2%E9%85%8D%E7%BD%AEdatabaseproperties%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">2.配置database.properties的数据库配置文件</a></li>
+<li><a href="#3-%E9%85%8D%E7%BD%AElog4jxml%E7%9A%84%E6%97%A5%E5%BF%97%E9%85%8D%E7%BD%AE">3. 配置log4j.xml的日志配置</a></li>
+<li><a href="#4%E9%85%8D%E7%BD%AEapplicationcontextxml%E7%9A%84spring%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">4.配置applicationContext.xml的spring配置信息</a></li>
+<li><a href="#5%E9%85%8D%E7%BD%AEspringmvc-servletxml%E7%9A%84springmvc%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">5.配置springmvc-servlet.xml的springMVC的配置信息</a></li>
+<li><a href="#6%E9%85%8D%E7%BD%AEwebxml%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF">6.配置web.xml的配置信息</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
-      </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
+    
+                            
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+                </div>
 
-AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
 
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
-
-
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    </div>
     <script>
-
-      var gitalk = new Gitalk({
-        clientID: '049ef8314a6b421eb956',
-        clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
-        repo: 'GitalkDatabase',
-        owner: 'zoengzihaam',
-        admin: ['zoengzihaam'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
     </script>
-  
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '049ef8314a6b421eb956',
+            clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
+            repo: 'GitalkDatabase',
+            owner: 'zoengzihaam',
+            admin: ['zoengzihaam'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
 
-  
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
 
+                    
+                                
+</body>
 
-
-
-  </body>
 </html>

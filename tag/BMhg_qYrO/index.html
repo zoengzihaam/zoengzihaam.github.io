@@ -1,198 +1,864 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Linux | 卷毛</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610436468302">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Linux | 卷毛
+</title>
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610626105614">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://zoengzihaam.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
-    <meta name="description" content="没有撤退可言。">
-  </head>
-  <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://zoengzihaam.github.io">
-        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1610436468302" class="site-logo">
-        <h1 class="site-title">卷毛</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      没有撤退可言。
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: Linux</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/9/">
-                  <h2 class="post-title">在VMware Workstation上安装CentOS7的网络问题</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-09
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/7/">
-                  <h2 class="post-title">Linux系统下实现远程连接MySQL数据库</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-04
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/6/">
-                  <h2 class="post-title">Tomcat添加SSL证书实现安全</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-04
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/2/">
-                  <h2 class="post-title">在虚拟机 VMware 下安装 Linux</h2>
-                </a>
-                <div class="post-date">
-                  2020-05-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/1/">
-                  <h2 class="post-title">Linux下安装Java配置环境</h2>
-                </a>
-                <div class="post-date">
-                  2020-05-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-
-          <div class="pagination-container">
-  
-  
-</div>
-
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://zoengzihaam.github.io">
+                <img class="avatar" src="https://zoengzihaam.github.io/images/avatar.png?v=1610626105614" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    卷毛
+                </h1>
+            </div>
         </div>
-      </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
+</div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-AOS.init();
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+        });
+    });
 </script>
 
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        Linux</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/9/">
+                        在VMware Workstation上安装CentOS7的网络问题
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-06-09</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="post-tag i-tag
+                            i-tag-other_3">
+            #Linux
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            配置网络
+虚拟机CentOS的网络设置
+1. 将网络适配器设置为NAT模式
+
+2. Linux中网络设置
+cd /etc/sysconfig/network-scripts/，进入CentOS7的网络配置文件下，找到对应的网卡设置，我这里的网卡是ifcfg-ens32，每个人的网卡名称可能不一样，不用在意。
+
+vim ifcfg-ens32 ，打开指定的网卡配置文件，如果系统没有安装 vim，使用 vi 打开即可。
+
+添加的ip、子网掩码、网关，在VMware Workstation中的虚拟网络编辑器中查看。
+
+选择VMnet8，然后NAT设置
+
+
+IPADDR：为上方的子网IP，建议IP设置为XXX.XXX.XXX.200~XXX.XXX.XXX.250之间
+PREFIXO：为上方子网掩码，255.255.255.0即为24
+GATEWAY：为上方网关IP，对应填上即可。
+DNS1：8.8.8.8
+DNS2：8.8.4.4
+这里DNS都设置为谷歌的DNS，正常解析即可，其他DNS也可。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/9/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/7/">
+                        Linux系统下实现远程连接MySQL数据库
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-06-04</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="post-tag i-tag
+                            i-tag-other_4">
+            #Linux
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+MySQL默认root用户只能本地访问，不能远程连接管理mysql数据库。
+
+步骤
+1. 在服务器端开启远程访问
+首先进入mysql数据库，然后输入下面两个命令：
+grant all privileges on *.* to &#39;root&#39;@&#39;%&#39; identified by &#39;123456&#39;;
+flush privileges;
+
+第一个*是数据库，可以改成允许访问的数据库名称
+第二个 是数据库的表名称，代表允许访问任意的表
+root代表远程登录使用的用户名，可以自定义
+%代表允许任意ip登录，如果你想指定特定的IP，可以把%替换掉就可以了
+password代表远程登录时使用的密码，可以自定义
+flush privileges;这是让权限立即生效
+2. 修改my.cnf配置文件
+这个是mysql的配置文件，如果你无标题文章找不到在哪里的话，可以输入find /* -name my.cnf找到
+通过vim编辑该文件，找到bind-address    = 127.0.0.1这一句，然后在前面加个#号注释掉，保存退出。
+3. 重启服务
+	service mysql restart
+
+4. 在本地远程连接
+在终端输入：
+mysql -h 服务器ip地址 -P 3306 -u root -p
+
+然后输入密码即可。
+root是第1点设置的用户名，密码也是第1点设置的密码
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/7/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/6/">
+                        Tomcat添加SSL证书实现安全
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-06-04</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="post-tag i-tag
+                            i-tag-">
+            #Linux
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+将网站域名申请SSL证书，并把证书配置在Tomcat中，实现进入网站即可跳转https，实现网站安全。
+
+1.下载证书并放置到tomcat安装目录下
+
+
+在tomcat安装目录下创建一个cert文件夹，将下载的证书中一个jks后缀的证书和一个txt后缀的密码文件上传到tomcat安装目录下
+mkdir /usr/local/tomcat/apache-tomcat-8.5.51/cert
+
+
+2.配置server.xml
+
+打开server.xml文件，设置配置文件
+
+vim /usr/local/tomcat/apache-tomcat-8.5.51/conf/server.xml
+
+
+找到Connector标签将8080端口后面的 redirectPort=&amp;quot;8443&amp;quot; 改为
+
+redirectPort=&amp;quot;443&amp;quot;
+
+
+
+找到下面SSL/TLS标签把注释的Connector标签打开并添加certificateKeystorePassword属性，里面的值填写下载的密码txt文件里面的内容。
 
 
 
 
 
-  </body>
+
+
+3.配置web.xml文件
+
+打开tomcat安装目录下的conf文件夹中的web.xml文件
+
+vim /usr/local/tomcat/apache-tomcat-8.5.51/conf/web.xml
+
+
+拉到最下面，找到welcome-file-list标签，在后面添加以下内容
+
+&amp;lt;login-config&amp;gt;
+    &amp;lt;!-- Authorization setting for SSL --&amp;gt;  
+    &amp;lt;auth-method&amp;gt;CLIENT-CERT&amp;lt;/auth-method&amp;gt;  
+    &amp;lt;realm-name&amp;gt;Client Cert Users-only Area&amp;lt;/realm-name&amp;gt;  
+&amp;lt;/login-config&amp;gt;  
+&amp;lt;security-constraint&amp;gt;  
+    &amp;lt;!-- Authorization setting for SSL --&amp;gt;  
+    &amp;lt;web-resource-collection &amp;gt;  
+        &amp;lt;web-resource-name &amp;gt;SSL&amp;lt;/web-resource-name&amp;gt;  
+        &amp;lt;url-pattern&amp;gt;/*&amp;lt;/url-pattern&amp;gt;  
+    &amp;lt;/web-resource-collection&amp;gt;  
+    &amp;lt;user-data-constraint&amp;gt;  
+        &amp;lt;transport-guarantee&amp;gt;CONFIDENTIAL&amp;lt;/transport-guarantee&amp;gt;  
+    &amp;lt;/user-data-constraint&amp;gt;  
+&amp;lt;/security-constraint&amp;gt;
+
+
+
+保存退出，将tomcat关闭再次开启。
+  **进入bin目录**
+
+
+
+cd /usr/local/tomcat/apache-tomcat-8.5.51/bin
+
+​		关闭tomcat
+./shutdown.sh
+
+​		启动tomcat
+./startup.sh
+
+再次访问网站即可成功安全配置SSL证书到tomcat服务器上。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/6/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/2/">
+                        在虚拟机 VMware 下安装 Linux
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-05-20</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="post-tag i-tag
+                            i-tag-other_3">
+            #Linux
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+Java后续学习中使用Linux系统，首先要将Linux的安装精通。
+
+安装Linux的工具，以及Linux版本
+
+VMware Woekstation (WORKSTATION 12 PRO)
+Linux：Centos
+Centos：CentOS-6.7-i386-bin-DVD1.iso
+
+注意：这里Centos使用的是 32位，大家可以按需选择 Centos 的版本。
+在VMware创建虚拟机
+1.创建一个新的虚拟机
+
+2.Centos镜像选择
+
+3.Centos操作系统安装版本
+
+4.选择Linux命名以及安装位置
+
+这里安装位置是否加虚拟机名称可有可无
+
+
+5.设置虚拟机的Linux大小
+
+6.自定义硬件
+
+内容、处理器可以自己设置，这里ISO映像选择CentOS-6.7-i386-bin-DVD1.iso
+
+
+到此，Linux在虚拟机上的配置全部完成，下面开始Linux系统的安装。
+安装Linux
+1.在VMware上开启虚拟机
+
+2.安装选项
+
+默认选择第一项即可
+
+
+
+
+跳过检测
+这里会出现磁盘检测，这里使用Tab切换到Skip，敲Enter跳过即可，这里也可以选择OK，不过检测会耗费大量时间。
+
+
+
+3.进入安装GUI界面
+
+
+
+选择语言
+这里推荐默认 English，可以自行选择
+
+
+
+
+选择键盘布局
+
+
+
+
+选择存储格式
+这里选择Basic Storage Devices即可
+
+
+
+
+格式化磁盘
+
+
+
+设置主机名
+
+
+
+选择时区
+
+
+
+
+设置ROOT密码
+这里密码简单会跳出提示，这里选择Use Anyway即可
+
+
+
+
+
+初始化设置
+选择Use All Space
+
+
+
+​		选择Write changes to disk
+
+
+
+选择Centos的版本，这里选择Desktop
+选择Desktop会默认安装一些软件，选择其他样式可能会缺少一些软件，后期也可以自己安装。
+
+
+
+
+等待安装
+
+
+
+
+重新引导
+安装成功之后，我们需要重新引导一下，稍等片刻即可进入Centos，Please enjoy~
+
+
+
+后续
+
+欢迎界面
+
+
+
+同意许可
+
+
+
+设置用户
+
+
+
+设置时间
+
+
+
+设置Kdump，默认即可。
+
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/2/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/1/">
+                        Linux下安装Java配置环境
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-05-20</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="post-tag i-tag
+                            i-tag-other_3">
+            #Linux
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            JDK的安装
+
+
+准备工作：安装依赖的环境
+yum -y install glibc.i686
+yum -y install libaio.so.1 libgcc_s.so.1 libstdc++.so.6
+yum -y install gcc-c++
+yum -y install libaio*
+
+
+
+检查之前是否安装JDK ，安装过则卸载
+rpm -qa | grep -i jdk 参数-i忽略大小写
+
+​如果查询结果为空，则当前Linux未安装虚拟机
+如果查询有结果，则执行下面命令，进行卸载jdk
+rpm -e --nodeps 程序名称
+
+
+
+安装JDK
+
+
+创建JDK的安装路径
+mkdir /usr/local/java
+
+
+
+上传JDK安装包
+
+
+解压 tar -zxvf 安装包 -C 指定目录
+
+
+配置环境变量(在Linux下 使用:来分隔)
+
+
+vim /etc/profile 在末尾添加如下消息
+export JAVA_HOME=/usr/local/jdk/jdk1.8.0_241
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export PATH=$JAVA_HOME/bin:$PATH
+
+
+重新加载环境变量配置文件
+
+~~~shell
+source /etc/profile
+~~~
+
+
+测试是否配置成功
+
+~~~shell
+java -version
+~~~
+
+Tomcat的安装
+
+
+检查之前是否安装tomcat，安装过则卸载
+rpm -qa | grep -i tomcat
+如果查询结果为空，则当前Linux未安装虚拟机
+如果查询有结果，则执行下面命令，进行卸载tomcat
+rpm -e --nodeps tomcat
+
+
+上传tomcat的安装文件
+将tomcat的压缩包上传到根目录下
+
+
+创建tomcat的安装路径(一般软件安装在usr下的local里面)
+mkdir /usr/local/tomcat
+
+
+解压tomcat
+tar -zxvf apache-tomcat-8.5.51.tar.gz -C /usr/local/tomcat
+
+
+配置环境变量
+vim /etc/profile 添加CATALINA和PATH路径
+export CATALINA_HOME=/usr/local/tomcat/apache-tomcat-8.5.51
+export PATH=CATALINAHOME/bin:CATALINA_HOME/bin:CATALINAH​OME/bin:PATH
+
+
+重新加载环境变量配置文件
+source /etc/profile
+
+
+启动tomcat
+
+
+进入tomcat安装路径的bin目录下
+cd /usr/local/tomcat/apache-tomcat-8.5.51/bin
+
+
+执行启动命令
+./startup.sh
+
+
+本机远程访问测试是否启动成功
+
+
+
+
+将tomcat服务加入开机启动项。
+
+
+首先将tomcat安装目录下bin目录中的startup.sh文件链接到/etc/init.d/下并起名为tomcat(etc目录下的init.d实际目录是etc/rc.d/init.d)
+ln -s /usr/local/tomcat/apache-tomcat-8.5.51/bin/startup.sh /etc/init.d/tomcat
+
+
+如果权限不够，则使用以下代码赋予最高权限
+ chmod 777 tomcat
+
+
+
+通过chkconfig命令将tomcat服务加入到自启动服务项中。(在任何目录下都可以执行以下命令)
+ chkconfig --add tomcat
+
+
+
+注意：服务名称tomcat就是我们将startup.sh链接到/etc/init.d/时重命名的名称。
+如果出现以下代码
+ service tomcat does not support chkconfig
+
+那么重新打开tomcat文件配置权限信息
+ vim /etc/init.d/tomcat
+
+在头部#！/bin/sh下添加
+ #chkconfig:2345 10 90
+
+在下方添加JDK以及tomcat的环境变量
+ export JAVA_HOME=/usr/local/jdk/jdk1.8.0_241
+ export CATALINA_HOME=/usr/local/tomcat/apache-tomcat-8.5.51
+
+
+
+查看是否添加成功
+ chkconfig --list tomcat
+
+
+
+如果2，3，4，5显示为on 则添加成功，若失败，则重新执行一次。
+
+
+Mysql的安装
+
+
+检查之前是否安装mysql，安装过则卸载
+ rpm -qa | grep -i mysql
+ 如果已经安装了库文件，应该先卸载，不然会出现覆盖错误。注意卸载时使用了--nodeps选项，忽略了依赖关系
+ rpm -e --nodeps 程序名称
+
+
+
+上传mysql的安装文件
+
+
+创建mysql的安装路径
+ mkdir /usr/local/mysql
+
+
+
+解压mysql
+
+
+添加mysql用户组和mysql用户，用于设置mysql安装目录文件所有者和所属组。
+ groupadd mysql
+ useradd -r -g mysql mysql
+
+
+
+进入mysql解压目录，并更改所属的组和用户。
+ cd /usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64
+ chown -R mysql .
+ chgrp -R mysql .
+
+
+
+注意：不要忘记mysql后的 &#39;.&#39;，代表所有目录。
+
+
+执行mysql_install_db脚本，对mysql中的data目录进行初始化并创建一些系统表格。注意mysql服务进程mysqld运行时会访问data目录，所以必须由启动mysqld进程的用户(就是我们之前设置的mysql用户)执行这个脚本，或者用root执行，但是加上参数--user=mysql。
+ scripts/mysql_install_db --user=mysql
+
+
+
+注意：如果出现以下错误
+FATAL ERROR: please install the following Perl modules before executing scripts/mysql_install_db:
+Data::Dumper
+
+则需要先安装安装autoconf库
+yum -y install autoconf
+
+
+
+将mysql/目录下除了data/目录的所有文件，改回root用户所有，mysql用户只需作为mysql/data/目录下所有文件的所有者。
+ chown -R root .
+ chown -R mysql data
+
+
+
+注意：同样，别忘记root后面的&#39;.&#39;
+
+
+复制配置文件到etc目录下
+ my-default.cnf文件在support-files目录下
+ cp my-default.cnf /etc/my.cnf
+
+
+
+并查看my.cnf配置，修改basedir
+cd /etc/
+vim my.cnf
+找到basedir修改为如下内容
+basedir =/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64
+
+
+
+将mysqld服务加入开机启动项。
+
+
+首先需要将support-files目录下的mysql.server服务脚本复制到/etc/init.d/，并重命名为mysqld。
+ cp mysql.server /etc/init.d/mysqld
+
+
+
+通过chkconfig命令将mysqld服务加入到自启动服务项中。(在任何目录下都可以执行以下命令)
+ chkconfig --add mysqld
+
+
+
+注意：服务名称mysqld就是我们将mysql.server复制到/etc/init.d/时重命名的名称。
+
+
+查看是否添加成功
+ chkconfig --list mysqld
+
+
+
+如果2，3，4，5显示为on 则添加成功，若失败，则重新执行一次。
+
+
+启动mysql
+service mysqld start
+
+如果出现SUCCESS 则代表启动成功
+如果出现以下错误error
+ERROR! The server quit without updating PID file (/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64/data/quality-unicorns-2.localdomain.pid).
+
+则使用以下代码将data文件夹重新赋予权限，然后重新启动mysql
+chown -R mysql.mysql /usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64/data
+
+service mysqld start
+
+
+
+运行客户端程序mysql查看是否连接到mysqld
+进入mysql的安装目录下的bin目录中，执行以下代码即可登录mysql
+./mysql
+
+或
+/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64/bin/mysql
+
+
+
+设置mysql初始密码并登录
+如果刚安装号mysql，超级用户root是没有密码，所以直接回车即可进入到mysql中
+修改密码
+定位到你的mysql安装目录bin目录下执行以下代码将密码设置为123456
+./mysqladmin -u root password 123456
+
+再次登录mysql，则需要输入完整的登录才能成功登录
+./mysql -u root -p 
+
+回车再输入上面设置的密码即可
+
+
+为了避免每次都输入mysql的全路径，添加mysql的环境变量
+打开系统环境变量配置文件
+vim /etc/profile
+
+添加下面两行命令
+export MYSQL_HOME=/usr/local/mysql/mysql-5.6.31-linux-glibc2.5-x86_64
+export PATH=$PATH:$MYSQL_HOME/bin
+
+重新加载环境变量文件
+source /etc/profile
+
+
+
+################
+vim的安装
+yum -y install vim*
+
+Linux常用命令
+cp 复制文件(如果复制目录文件需要加上-r)
+rm 删除文件(如果删除目录文件需要加上-r，如果强制删除需要加上-f)
+vi/vim 编辑文件(文件编辑器):命令模式-&amp;gt;编辑模式-&amp;gt;底行模式
+clear 清屏
+cat 查看文件
+tar 压缩文件或解压文件(-zxvf)
+tail(如果你想查看文件的后10行，可以使用tail命令，如：tail -10 /etc/passwd 或 tail -n 10 /etc/passwd tail -f /var/log/messages 参数-f使tail不停的去读最新的内容，这样有实时监视的效果 用Ctrl+c来终止！)：当文件较大时使用，查看文件的后几行。
+reboot 重启虚拟机
+halt 关机
+ifconfig 查看本机ip地址
+ps -ef 查看进程号 ps -aux
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/1/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://zoengzihaam.github.io/images/avatar.png?v=1610626105614)">
+        </div>
+        <h1 class="id_card-title">
+            卷毛
+        </h1>
+        <h2 class="id_card-description">
+            没有撤退可言。
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
 </html>

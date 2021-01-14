@@ -1,110 +1,125 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Redis | 卷毛</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610436468302">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Redis | 卷毛
+</title>
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610626105614">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://zoengzihaam.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
 
-  
+                    
+                            
+</head>
 
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
-    <meta name="description" content="
-多能，数据类型丰富，使用Redis，Tair
-Redis:REmote DIctionary Server(远程字典服务器)
-是完全开源免费的，用C语言编写的，遵守BSD协议，
-是一个高性能的(key/value)分布式内存数据库，基于内..." />
-    <meta name="keywords" content="Redis" />
-  </head>
-  <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://zoengzihaam.github.io">
-        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1610436468302" class="site-logo">
-        <h1 class="site-title">卷毛</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://zoengzihaam.github.io">
+                <img class="avatar" src="https://zoengzihaam.github.io/images/avatar.png?v=1610626105614" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    卷毛
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      没有撤退可言。
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
 </div>
 
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Redis</h2>
-            <div class="post-date">2020-06-04</div>
-            
-            <div class="post-content" v-pre>
-              <blockquote>
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
+
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Redis
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-06-04</time>
+                            
+                                <a href="https://zoengzihaam.github.io/tag/5K5Gk1gnd/" class="post-tag i-tag
+                            i-tag-error">
+                            #Redis
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <blockquote>
 <p>多能，数据类型丰富，使用Redis，Tair</p>
 <p>Redis:REmote DIctionary Server(远程字典服务器)</p>
 <p>是完全开源免费的，用C语言编写的，遵守BSD协议，<br>
@@ -1303,82 +1318,348 @@ slaves的连接和同步请求，那么该slave作为了链条中下一个的mas
 </li>
 </ul>
 
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://zoengzihaam.github.io/tag/5K5Gk1gnd/" class="tag">
-                    Redis
-                  </a>
-                
-              </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://zoengzihaam.github.io/post/7/">
-                  <h3 class="post-title">
-                    Linux系统下实现远程连接MySQL数据库
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
-
-              
-            
-
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://zoengzihaam.github.io/post/7/">
+                                <h3 class="post-title">
+                                    Linux系统下实现远程连接MySQL数据库
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%8B%E8%BD%BDredis">下载Redis</a></li>
+<li><a href="#%E5%AF%B9redis%E7%9A%84%E7%90%86%E8%A7%A3">对Redis的理解</a></li>
+<li><a href="#redis%E7%9A%84%E6%A6%82%E8%BF%B0">Redis的概述</a></li>
+<li><a href="#%E4%BC%A0%E7%BB%9F%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93">传统关系型数据库</a>
+<ul>
+<li><a href="#1-a-atomicity-%E5%8E%9F%E5%AD%90%E6%80%A7">1、A (Atomicity) 原子性</a></li>
+<li><a href="#2-c-consistency-%E4%B8%80%E8%87%B4%E6%80%A7">2、C (Consistency) 一致性</a></li>
+<li><a href="#3-i-isolation-%E7%8B%AC%E7%AB%8B%E6%80%A7">3、I (Isolation) 独立性</a></li>
+<li><a href="#4-d-durability-%E6%8C%81%E4%B9%85%E6%80%A7">4、D (Durability) 持久性</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9D%9E%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93">非关系型数据库</a>
+<ul>
+<li><a href="#cconsistency%E5%BC%BA%E4%B8%80%E8%87%B4%E6%80%A7">C:Consistency（强一致性）</a></li>
+<li><a href="#aavailability%E5%8F%AF%E7%94%A8%E6%80%A7">A:Availability（可用性）</a></li>
+<li><a href="#ppartition-tolerance%E5%88%86%E5%8C%BA%E5%AE%B9%E9%94%99%E6%80%A7">P:Partition tolerance（分区容错性）</a></li>
+</ul>
+</li>
+<li><a href="#redis%E7%9A%84%E5%AE%89%E8%A3%85">Redis的安装</a></li>
+<li><a href="#redis%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8">Redis基本使用</a>
+<ul>
+<li><a href="#%E6%9B%B4%E6%94%B9%E9%85%8D%E7%BD%AE">更改配置</a>
+<ul>
+<li><a href="#1%E6%9B%B4%E6%94%B9redisconf%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">1.更改redis.conf配置文件</a></li>
+</ul>
+</li>
+<li><a href="#%E5%90%AF%E5%8A%A8">启动</a></li>
+<li><a href="#%E8%BF%9E%E9%80%9A%E6%B5%8B%E8%AF%95">连通测试</a></li>
+<li><a href="#%E5%85%B3%E9%97%ADredis">关闭redis</a></li>
+</ul>
+</li>
+<li><a href="#redis%E5%8F%AF%E8%83%BD%E9%81%87%E5%88%B0%E9%97%AE%E9%A2%98">Redis可能遇到问题</a></li>
+<li><a href="#redis%E5%90%AF%E5%8A%A8%E5%90%8E%E6%9D%82%E9%A1%B9%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%AE%B2%E8%A7%A3">Redis启动后杂项基础知识讲解</a>
+<ul>
+<li><a href="#%E5%8D%95%E8%BF%9B%E7%A8%8B">单进程</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A416%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%BA%93">默认16个数据库</a></li>
+<li><a href="#dbsize">DBSIZE</a></li>
+<li><a href="#flushdb"><strong>FLUSHDB</strong></a></li>
+<li><a href="#flushall">FLUSHALL</a></li>
+<li><a href="#%E7%BB%9F%E4%B8%80%E5%AF%86%E7%A0%81%E7%AE%A1%E7%90%86">统一密码管理</a></li>
+<li><a href="#%E7%B4%A2%E5%BC%95">索引</a></li>
+<li><a href="#%E9%BB%98%E8%AE%A4%E7%AB%AF%E5%8F%A3">默认端口</a></li>
+</ul>
+</li>
+<li><a href="#redis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">Redis数据类型</a>
+<ul>
+<li><a href="#redis%E7%9A%84%E4%BA%94%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">Redis的五大数据类型</a>
+<ul>
+<li><a href="#string%E5%AD%97%E7%AC%A6%E4%B8%B2">String（字符串）</a></li>
+<li><a href="#hash%E5%93%88%E5%B8%8C%E7%B1%BB%E4%BC%BCjava%E9%87%8C%E7%9A%84map">Hash（哈希，类似java里的Map）</a></li>
+<li><a href="#list%E5%88%97%E8%A1%A8">List（列表）</a></li>
+<li><a href="#set%E9%9B%86%E5%90%88">Set（集合）</a></li>
+<li><a href="#zsetsorted-set%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88">Zset(sorted set：有序集合)</a></li>
+</ul>
+</li>
+<li><a href="#%E5%93%AA%E9%87%8C%E5%8E%BB%E8%8E%B7%E5%BE%97redis%E5%B8%B8%E8%A7%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4">哪里去获得redis常见数据类型操作命令</a></li>
+<li><a href="#redis-%E9%94%AEkey">Redis 键(key)</a></li>
+<li><a href="#redis%E5%AD%97%E7%AC%A6%E4%B8%B2string">Redis字符串(String)</a></li>
+<li><a href="#redis%E5%88%97%E8%A1%A8list">Redis列表(List)</a></li>
+<li><a href="#redis%E9%9B%86%E5%90%88set">Redis集合(Set)</a></li>
+<li><a href="#redis%E5%93%88%E5%B8%8Chash">Redis哈希(Hash)</a></li>
+<li><a href="#redis%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88zsetsorted-set">Redis有序集合Zset(sorted set)</a></li>
+</ul>
+</li>
+<li><a href="#%E8%A7%A3%E6%9E%90%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6redisconf">解析配置文件redis.conf</a>
+<ul>
+<li><a href="#1%E5%AE%83%E5%9C%A8%E5%93%AA">1.它在哪</a></li>
+<li><a href="#2units%E5%8D%95%E4%BD%8D">2.Units单位</a></li>
+<li><a href="#3includes%E5%8C%85%E5%90%AB">3.INCLUDES包含</a></li>
+<li><a href="#4general%E9%80%9A%E7%94%A8">4.GENERAL通用</a>
+<ul>
+<li><a href="#daemonize">daemonize</a></li>
+<li><a href="#pidfile">Pidfile</a></li>
+<li><a href="#port">Port</a></li>
+<li><a href="#tcp-backlog">Tcp-backlog</a></li>
+<li><a href="#timeout">Timeout</a></li>
+<li><a href="#bind">Bind</a></li>
+<li><a href="#tcp-keepalive">Tcp-keepalive</a></li>
+<li><a href="#loglevel">Loglevel</a></li>
+<li><a href="#logfile">Logfile</a></li>
+<li><a href="#syslog-enabled">Syslog-enabled</a></li>
+<li><a href="#syslog-ident">Syslog-ident</a></li>
+<li><a href="#syslog-facility">Syslog-facility</a></li>
+<li><a href="#databases">Databases</a></li>
+</ul>
+</li>
+<li><a href="#5snapshotting%E5%BF%AB%E7%85%A7">5.SNAPSHOTTING快照</a>
+<ul>
+<li><a href="#save">Save</a></li>
+<li><a href="#stop-writes-on-bgsave-error">Stop-writes-on-bgsave-error</a></li>
+<li><a href="#rdbcompression">rdbcompression</a></li>
+<li><a href="#rdbchecksum">rdbchecksum</a></li>
+<li><a href="#dbfilename">dbfilename</a></li>
+<li><a href="#dir">dir</a></li>
+</ul>
+</li>
+<li><a href="#6replication%E5%A4%8D%E5%88%B6">6.REPLICATION复制</a></li>
+<li><a href="#7security%E5%AE%89%E5%85%A8">7.SECURITY安全</a></li>
+<li><a href="#8limits%E9%99%90%E5%88%B6">8.LIMITS限制</a>
+<ul>
+<li><a href="#maxclients">Maxclients</a></li>
+<li><a href="#maxmemory">Maxmemory</a></li>
+<li><a href="#maxmemory-policy">Maxmemory-policy</a></li>
+<li><a href="#maxmemory-samples">Maxmemory-samples</a></li>
+</ul>
+</li>
+<li><a href="#9append-only-mode%E8%BF%BD%E5%8A%A0">9.APPEND ONLY MODE追加</a>
+<ul>
+<li><a href="#appendonly">appendonly</a></li>
+<li><a href="#appendfilename">appendfilename</a></li>
+<li><a href="#appendfsync">Appendfsync</a></li>
+<li><a href="#no-appendfsync-on-rewrite%E9%87%8D%E5%86%99%E6%97%B6%E6%98%AF%E5%90%A6%E5%8F%AF%E4%BB%A5%E8%BF%90%E7%94%A8appendfsync%E7%94%A8%E9%BB%98%E8%AE%A4no%E5%8D%B3%E5%8F%AF%E4%BF%9D%E8%AF%81%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8%E6%80%A7">No-appendfsync-on-rewrite：重写时是否可以运用Appendfsync，用默认no即可，保证数据安全性。</a></li>
+<li><a href="#auto-aof-rewrite-min-size%E8%AE%BE%E7%BD%AE%E9%87%8D%E5%86%99%E7%9A%84%E5%9F%BA%E5%87%86%E5%80%BC">Auto-aof-rewrite-min-size：设置重写的基准值</a></li>
+<li><a href="#auto-aof-rewrite-percentage%E8%AE%BE%E7%BD%AE%E9%87%8D%E5%86%99%E7%9A%84%E5%9F%BA%E5%87%86%E5%80%BC">Auto-aof-rewrite-percentage：设置重写的基准值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96">Redis的持久化</a>
+<ul>
+<li><a href="#%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D">总体介绍</a>
+<ul>
+<li><a href="#%E5%AE%98%E7%BD%91%E4%BB%8B%E7%BB%8D">官网介绍</a></li>
+</ul>
+</li>
+<li><a href="#rdbredis-database">RDB（Redis DataBase）</a>
+<ul>
+<li><a href="#%E5%AE%98%E7%BD%91%E4%BB%8B%E7%BB%8D-2">官网介绍</a></li>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88">是什么：</a></li>
+<li><a href="#fork">Fork</a></li>
+<li><a href="#rdb-%E4%BF%9D%E5%AD%98%E7%9A%84%E6%98%AFdumprdb%E6%96%87%E4%BB%B6">Rdb 保存的是dump.rdb文件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E4%BD%8D%E7%BD%AE">配置位置</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%A7%A6%E5%8F%91rdb%E5%BF%AB%E7%85%A7">如何触发RDB快照</a>
+<ul>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E9%BB%98%E8%AE%A4%E7%9A%84%E5%BF%AB%E7%85%A7%E9%85%8D%E7%BD%AE">配置文件中默认的快照配置</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4save%E6%88%96%E8%80%85%E6%98%AFbgsave">命令save或者是bgsave</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8Cflushall%E5%91%BD%E4%BB%A4%E4%B9%9F%E4%BC%9A%E4%BA%A7%E7%94%9Fdumprdb%E6%96%87%E4%BB%B6%E4%BD%86%E9%87%8C%E9%9D%A2%E6%98%AF%E7%A9%BA%E7%9A%84%E6%97%A0%E6%84%8F%E4%B9%89">执行flushall命令，也会产生dump.rdb文件，但里面是空的，无意义</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A6%82%E4%BD%95%E6%81%A2%E5%A4%8D">如何恢复</a></li>
+<li><a href="#%E4%BC%98%E5%8A%BF">优势</a></li>
+<li><a href="#%E5%8A%A3%E5%8A%BF">劣势</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E5%81%9C%E6%AD%A2">如何停止</a></li>
+<li><a href="#%E5%B0%8F%E6%80%BB%E7%BB%93">小总结</a></li>
+</ul>
+</li>
+<li><a href="#aofappend-only-file">AOF（Append Only File）</a>
+<ul>
+<li><a href="#%E5%AE%98%E7%BD%91%E4%BB%8B%E7%BB%8D-3">官网介绍</a></li>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88-2">是什么：</a></li>
+<li><a href="#aof%E4%BF%9D%E5%AD%98%E7%9A%84%E6%98%AFappendonlyaof%E6%96%87%E4%BB%B6">Aof保存的是appendonly.aof文件</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E4%BD%8D%E7%BD%AE-2">配置位置</a></li>
+<li><a href="#aof%E5%90%AF%E5%8A%A8%E4%BF%AE%E5%A4%8D%E6%81%A2%E5%A4%8D">AOF启动/修复/恢复</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%B8%B8%E6%81%A2%E5%A4%8D">正常恢复</a></li>
+<li><a href="#%E5%BC%82%E5%B8%B8%E6%81%A2%E5%A4%8D">异常恢复</a></li>
+</ul>
+</li>
+<li><a href="#rewrite">Rewrite</a>
+<ul>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88-3">是什么：</a></li>
+<li><a href="#%E9%87%8D%E5%86%99%E5%8E%9F%E7%90%86">重写原理</a></li>
+<li><a href="#%E8%A7%A6%E5%8F%91%E6%9C%BA%E5%88%B6">触发机制</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BC%98%E5%8A%BF-2">优势</a>
+<ul>
+<li><a href="#%E6%AF%8F%E4%BF%AE%E6%94%B9%E5%90%8C%E6%AD%A5">每修改同步：</a></li>
+<li><a href="#%E6%AF%8F%E7%A7%92%E5%90%8C%E6%AD%A5">每秒同步：</a></li>
+<li><a href="#%E4%B8%8D%E5%90%8C%E6%AD%A5">不同步：</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8A%A3%E5%8A%BF-2">劣势</a></li>
+<li><a href="#%E5%B0%8F%E6%80%BB%E7%BB%93-2">小总结</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93which-one">总结(Which one)</a>
+<ul>
+<li><a href="#%E5%AE%98%E7%BD%91%E5%BB%BA%E8%AE%AE">官网建议</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#redis%E7%9A%84%E4%BA%8B%E5%8A%A1">Redis的事务</a>
+<ul>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88-4">是什么</a></li>
+<li><a href="#%E8%83%BD%E5%B9%B2%E5%98%9B">能干嘛</a></li>
+<li><a href="#%E6%80%8E%E4%B9%88%E7%8E%A9">怎么玩</a>
+<ul>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a></li>
+<li><a href="#case1%E6%AD%A3%E5%B8%B8%E6%89%A7%E8%A1%8C">Case1：正常执行</a></li>
+<li><a href="#case2%E6%94%BE%E5%BC%83%E4%BA%8B%E5%8A%A1">Case2：放弃事务</a></li>
+<li><a href="#case3%E5%85%A8%E4%BD%93%E8%BF%9E%E5%9D%90">Case3：全体连坐</a></li>
+<li><a href="#case4%E5%86%A4%E5%A4%B4%E5%80%BA%E4%B8%BB">Case4：冤头债主</a></li>
+<li><a href="#case5watch%E7%9B%91%E6%8E%A7">Case5：watch监控</a></li>
+</ul>
+</li>
+<li><a href="#3%E9%98%B6%E6%AE%B5">3阶段</a>
+<ul>
+<li><a href="#%E5%BC%80%E5%90%AF">开启：</a></li>
+<li><a href="#%E5%85%A5%E9%98%9F">入队：</a></li>
+<li><a href="#%E6%89%A7%E8%A1%8C">执行：</a></li>
+</ul>
+</li>
+<li><a href="#3%E7%89%B9%E6%80%A7">3特性</a>
+<ul>
+<li><a href="#%E5%8D%95%E7%8B%AC%E7%9A%84%E9%9A%94%E7%A6%BB%E6%93%8D%E4%BD%9C">单独的隔离操作：</a></li>
+<li><a href="#%E6%B2%A1%E6%9C%89%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9A%84%E6%A6%82%E5%BF%B5">没有隔离级别的概念：</a></li>
+<li><a href="#%E4%B8%8D%E4%BF%9D%E8%AF%81%E5%8E%9F%E5%AD%90%E6%80%A7">不保证原子性：</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#redis%E7%9A%84%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85">Redis的发布订阅</a>
+<ul>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88-5">是什么</a></li>
+<li><a href="#%E5%91%BD%E4%BB%A4">命令</a></li>
+<li><a href="#%E6%A1%88%E4%BE%8B">案例</a></li>
+</ul>
+</li>
+<li><a href="#redis%E7%9A%84%E5%A4%8D%E5%88%B6masterslave">Redis的复制(Master/Slave)</a>
+<ul>
+<li><a href="#%E6%98%AF%E4%BB%80%E4%B9%88-6">是什么</a>
+<ul>
+<li><a href="#%E5%AE%98%E7%BD%91">官网</a></li>
+<li><a href="#%E8%A1%8C%E8%AF%9D">行话：</a></li>
+</ul>
+</li>
+<li><a href="#%E8%83%BD%E5%B9%B2%E5%98%9B-2">能干嘛</a></li>
+<li><a href="#%E6%80%8E%E4%B9%88%E7%8E%A9-2">怎么玩</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E5%8E%9F%E7%90%86">复制原理</a></li>
+<li><a href="#%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8Fsentinel">哨兵模式(sentinel)</a></li>
+<li><a href="#%E5%A4%8D%E5%88%B6%E7%9A%84%E7%BC%BA%E7%82%B9">复制的缺点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
         </div>
-      </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
     </div>
+    
+                            
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+                </div>
 
-AOS.init();
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
 
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
-
-
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    </div>
     <script>
-
-      var gitalk = new Gitalk({
-        clientID: '049ef8314a6b421eb956',
-        clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
-        repo: 'GitalkDatabase',
-        owner: 'zoengzihaam',
-        admin: ['zoengzihaam'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
     </script>
-  
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '049ef8314a6b421eb956',
+            clientSecret: '663d9d7b41b952b25ca2ea0e38cd6ae061bd63c2',
+            repo: 'GitalkDatabase',
+            owner: 'zoengzihaam',
+            admin: ['zoengzihaam'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
 
-  
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
 
+                    
+                                
+</body>
 
-
-
-  </body>
 </html>

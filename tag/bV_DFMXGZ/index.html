@@ -1,168 +1,419 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
 
-<title>Docker | 卷毛</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610436468302">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Docker | 卷毛
+</title>
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610626105614">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://zoengzihaam.github.io/styles/main.css">
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://zoengzihaam.github.io/media/js/jquery.sticky-sidebar.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
+</head>
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-
-
-    <meta name="description" content="没有撤退可言。">
-  </head>
-  <body>
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://zoengzihaam.github.io">
-        <img src="https://zoengzihaam.github.io/images/avatar.png?v=1610436468302" class="site-logo">
-        <h1 class="site-title">卷毛</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      没有撤退可言。
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: Docker</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/16/">
-                  <h2 class="post-title">docker开机自启</h2>
-                </a>
-                <div class="post-date">
-                  2020-07-25
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/15/">
-                  <h2 class="post-title">Docker安装GUI图形化界面（Portainer）</h2>
-                </a>
-                <div class="post-date">
-                  2020-07-25
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zoengzihaam.github.io/post/10/">
-                  <h2 class="post-title">Docker中 CMD 与 ENTRYPOINT 保留指令的区别</h2>
-                </a>
-                <div class="post-date">
-                  2020-06-09
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-            </article>
-          
-
-          <div class="pagination-container">
-  
-  
-</div>
-
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://zoengzihaam.github.io">
+                <img class="avatar" src="https://zoengzihaam.github.io/images/avatar.png?v=1610626105614" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    卷毛
+                </h1>
+            </div>
         </div>
-      </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
+</div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
-AOS.init();
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+        });
+    });
 </script>
 
+            <div id="main-content" class="post-container main-container">
+                <div id="content" class="main-container-left">
+                    
+    <div class="i-card">
+        <b>标签：#
+        Docker</b>
+    </div>
+    
+        
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/16/">
+                        docker开机自启
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-07-25</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/bV_DFMXGZ/" class="post-tag i-tag
+                            i-tag-other_2">
+            #Docker
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            docker开机自启
+一、docker服务设置自动启动
+
+适用于yum安装的各种服务
+
+
+查看已启动的服务
+
+systemctl list-units --type=service
+
+
+查看是否设置开机启动
+
+systemctl list-unit-files | grep enable
+
+
+设置开机启动
+
+systemctl enable docker.service
+
+
+关闭开机启动
+
+systemctl disable docker.service
+
+二、docker容器设置自动启动
+
+启动时加 --restart=always
+
+docker run tomcat -it -d -p 8080:8080 --restart=always
+
+
+
+如果已经运行过的项目
+针对：已经启动的项目，使用update更新
+
+
+docker update --restart=always imagesID
+
+restart参数的启动选项
+
+
+
+Flag
+Description
 
 
 
 
+no
+不自动重启容器. (默认value)
 
-  </body>
+
+on-failure
+容器发生error而退出(容器退出状态不为0)重启容器
+
+
+unless-stopped
+在容器已经stop掉或Docker stoped/restarted的时候才重启容器
+
+
+always
+在容器已经stop掉或Docker stoped/restarted的时候才重启容器
+
+
+
+
+转载至：秋寻草
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/16/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/15/">
+                        Docker安装GUI图形化界面（Portainer）
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-07-25</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/bV_DFMXGZ/" class="post-tag i-tag
+                            i-tag-other_4">
+            #Docker
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            Docker安装GUI图形化界面（Portainer）
+
+Portainer是一个开源、轻量级Docker管理用户界面，基于Docker API，提供状态显示面板、应用模板快速部署、容器镜像网络数据卷的基本操作（包括上传下载镜像，创建容器等操作）、事件日志显示、容器控制台操作、Swarm集群和服务等集中管理和操作、登录用户管理和控制等功能。功能十分全面，基本能满足中小型单位对容器管理的全部需求。
+
+快速入门
+1.官网
+https://www.portainer.io/installation/
+2.使用docker安装portainer
+1.搜索portainer
+docker search portainer
+
+
+2.将镜像拉取到本地
+docker pull portainer/portainer
+
+
+3.运行镜像
+docker run -d -it --name portainerUI -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+
+
+注意：这里如果使用单机版，一定要使用 -v /var/run/docker.sock:/var/run/docker.sock，否则在进入WEBUI的时候创建会出现问题，这里 volume也可使用官方教程，这里将运行代码一并贴入。
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+
+官方这里创建了一个portainer_data的文件夹用于存储数据，大家按需运行即可。
+3.访问Portainer
+1.创建用户
+打开浏览器输入 ip:端口号，这里ip是Linux的地址，端口号为启动的时候映射的端口。
+
+2.连接docker环境
+
+3.进入Portainer管理
+
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/15/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+            <article class="post i-card">
+                <h2 class="post-title">
+                    <a href="https://zoengzihaam.github.io/post/10/">
+                        Docker中 CMD 与 ENTRYPOINT 保留指令的区别
+                    </a>
+                </h2>
+                <div class="post-info">
+                    <time class="post-time">2020-06-09</time>
+                    
+                        <a href="https://zoengzihaam.github.io/tag/bV_DFMXGZ/" class="post-tag i-tag
+                            i-tag-primary">
+            #Docker
+        </a>
+                        
+                </div>
+                <div class="post-article">
+                    
+                            <div class="post-content">
+                                
+                                        <div class="post-content-content">
+                                            
+编写Dockerfile时，时常看到最后会看到CMD或者ENTRYPOINT 的保留指令，但是他们的意义都为：指定一个容器启动时要运行的命令，那么它们之间的差异在哪里？
+
+使用curl命令来说明
+首先编写两个Dockerfile
+
+使用CMD保留指令。
+
+FROM centos
+RUN yum install -y curl
+CMD [ &amp;quot;curl&amp;quot;, &amp;quot;-s&amp;quot;, &amp;quot;https://www.baidu.com/&amp;quot; ]
+
+这里 Dockerfile 的名字要求小写，否则会报错invalid argument &amp;quot;cmdCentos&amp;quot; for &amp;quot;-t, --tag&amp;quot; flag: invalid reference format: repository name must be lowercase See &#39;docker build --help&#39;.
+
+
+使用ENTRYPOINT保留指令。
+
+FROM centos
+RUN yum install -y curl
+ENTRYPOINT [ &amp;quot;curl&amp;quot;, &amp;quot;-s&amp;quot;, &amp;quot;https://www.baidu.com/&amp;quot; ]
+
+
+在docker中进行build进行构建一个新的镜像
+
+
+构建CMD保留指令的Dockerfile。
+
+
+
+构建ENTRYPOINT保留指令的Dockerfile。
+
+
+
+运行两个镜像进行对比
+
+
+运行CMD保留指令的镜像。
+
+
+
+运行ENTRYPOINT保留指令的镜像。
+
+
+
+这个时候我们发现，两个镜像运行起来没有任何区别，但是重点来了！当我们需要对镜像启动时要运行的命令进行增强的时候。
+比如我们还想获取指定网站的头信息。
+
+
+运行增强后的CMD保留指令的镜像。
+
+
+
+运行增强后的ENTRYPOINT保留指令的镜像。
+
+
+
+总结
+由上述的案例，我们不难发现，在执行Dockerfile中，如果使用了CMD保留指令，那么在执行镜像的时候，我们在其启动命令后面添加OPTION选项的时候，将会覆盖Dockerfile中的上一句指令，造成运行失败。例如：
+FROM centos
+RUN yum install -y curl
+CMD [ &amp;quot;curl&amp;quot;, &amp;quot;-s&amp;quot;, &amp;quot;https://www.baidu.com/&amp;quot; ]
+CMD -i
+
+如果使用ENTRYPOINT保留指令，那么在执行镜像的时候，我们在其启动命令后面添加OPTION选项的时候，会对运行的命令进行“增强”。例如：
+FROM centos
+RUN yum install -y curl
+ENTRYPOINT [ &amp;quot;curl&amp;quot;, &amp;quot;-s&amp;quot;,&amp;quot;-i&amp;quot;, &amp;quot;https://www.baidu.com/&amp;quot; ]
+
+所以，在实际应用中，是使用CMD还是ENTRYPOINT保留指令，要根据具体的业务要求。
+
+                                        </div>
+                                        
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/10/">Read More ~</a>
+                            </div>
+                </div>
+            </article>
+            
+                <!-- 翻页 -->
+                
+                </div>
+                <!--  -->
+                <div class="main-container-middle"></div>
+                <!--  -->
+                <div id="sidebar" class="main-container-right">
+
+                    <!-- 个人信息 -->
+                    
+    <div class="id_card i-card">
+        <div class="id_card-avatar" style="background-image: url(https://zoengzihaam.github.io/images/avatar.png?v=1610626105614)">
+        </div>
+        <h1 class="id_card-title">
+            卷毛
+        </h1>
+        <h2 class="id_card-description">
+            没有撤退可言。
+        </h2>
+        <!--  -->
+        <div class="id_card-sns">
+            <!-- github -->
+            
+                    <!-- twitter -->
+                    
+                            <!-- weibo -->
+                            
+                                    <!-- facebook -->
+                                    
+
+        </div>
+    </div>
+    
+
+                        <!-- 公告栏 -->
+                        
+
+                </div>
+            </div>
+
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://zoengzihaam.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+    <script>
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
+    </script>
+</body>
+
 </html>
