@@ -5,7 +5,7 @@
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>
-    图床 | 卷毛
+    VPS | 卷毛
 </title>
 <link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico?v=1610626506137">
 <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
@@ -98,69 +98,146 @@
                     
     <div class="i-card">
         <b>标签：#
-        图床</b>
+        VPS</b>
     </div>
     
         
             <article class="post i-card">
                 <h2 class="post-title">
-                    <a href="https://zoengzihaam.github.io/post/5/">
-                        使用PicGo+GitHub打造最稳定可靠的免费图床
+                    <a href="https://zoengzihaam.github.io/post/netflixdns-jie-suo/">
+                        NetflixDNS解锁
                     </a>
                 </h2>
                 <div class="post-info">
-                    <time class="post-time">2020-06-04</time>
+                    <time class="post-time">2021-01-12</time>
                     
-                        <a href="https://zoengzihaam.github.io/tag/C3mBXuY7J/" class="post-tag i-tag
+                        <a href="https://zoengzihaam.github.io/tag/g80SHtBSX/" class="post-tag i-tag
                             i-tag-success">
-            #图床
+            #Netflix
+        </a>
+                        
+                        <a href="https://zoengzihaam.github.io/tag/nT7uo7T7GH/" class="post-tag i-tag
+                            i-tag-success">
+            #VPS
         </a>
                         
                 </div>
                 <div class="post-article">
                     
+                        <a href="https://zoengzihaam.github.io/post/netflixdns-jie-suo/" class="post-feature-image" style="background-image:url(https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20210114201328.jpg) ">
+                        </a>
+                        
                             <div class="post-content">
                                 
                                         <div class="post-content-content">
-                                            创建自己的GitHub图床
-1.创建GitHub图床之前，需要注册/登陆GitHub账号
-申请GitHub账号并登陆到GitHub官网。
-2.创建Repository
-在个人选项栏中点击New repository
+                                            NetflixDNS解锁
 
-添加Repository相关的一些设置
+由于Netflix的版权问题，使用一般的代理服务跨区看剧时会被 Netflix 检测到并阻止，当我们使用的vps不能观看Netflix的时候，我们可以选择购买便宜大碗的vps来辅助解锁不能查看Netflix的vps。
 
-3.生成一个Token用于操作GitHub Repository
-在个人栏中选择Settings
+准备工作
+正式开始之前，我们需要做一些基本的准备，你至少需要这些东西：
 
-点击左侧的Developer settings
+支持 Netflix 的代理服务
+不支持 Netflix 的代理服务
+Netflix订阅
 
-点击Personal access tokens为上面创建的Repository创建一个Token
+就目前而言，美区应该是目前剧集资源最丰富的地区，但是根据本人亲测，美区的资源并不符合国人的观看风格，个人比较推荐香港。
+使用Dnsmasq解锁Netflix（奈飞）流媒体服务
+这里借助了萌精灵 的脚本实现，这里感谢萌精灵。
+安装方法：
+支持 Netflix 的代理vps安装
+wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh &amp;amp;&amp;amp; bash dnsmasq_sniproxy.sh -f
 
-创建一个新的Token，并配置信息。
+卸载方法：
+wget --no-check-certificate -O dnsmasq_sniproxy.sh https://raw.githubusercontent.com/myxuchangbin/dnsmasq_sniproxy_install/master/dnsmasq_sniproxy.sh &amp;amp;&amp;amp; bash dnsmasq_sniproxy.sh -u
 
-创建成功复制生成的Token，这里注意：生成要提前复制保存，关闭了就看不到了，只能再次生成一次Token。
-配置PicGo
-1.下载运行PicGo
-在官网下载PicGo，根据自己的操作系统进行下载。
-2.配置图床
-按照下图进行GitHub图床配置
+使用方法：
+将不支持 Netflix 的代理VPS的DNS地址修改为支持 Netflix 的代理vps的IP就可以了，如果不能用，记得只保留一个DNS地址试一下。
+⚠️：防止滥用，建议不要随意公布IP地址，或使用防火墙做好限制工作。
+调试排错：
 
-3.快捷键及相关配置
-4.其他相关
-使用jsDelivr CDN 加速 Github 仓库的图片
+确认sniproxy有效运行
 
-原自定义域名：
+重启sni命令：systemctl restart sniproxy
+如果sni不在运行，可检查配置/etc/sniproxy.conf，避免ss、nginx或者其他程序监听80,443，可将其配置文件的80更改为801等。 443端口必须给sni监听放行，查看：netstat -tlunp|grep 443
 
-https://raw.githubusercontent.com/用户名/仓库名/master/images
+确认防火墙放行443,53
 
-加速后自定义域名
+调试可直接关闭防火墙 systemctl stop firewalld.service
+阿里云/谷歌云/AWS等外部防火墙放行 可通过其他服务器 telnet vpsip 53 以及 telnet vpsip 443 进行测试
 
-https://cdn.jsdelivr.net/gh/用户名/仓库名@master
+解析域名
+
+尝试用其他服务器配置完毕dns后，解析域名：nslookup netflix.com 判断IP是否是NETFLIX代理机器IP 如果不存在nslookup命令，CENTOS安装：yum install -y bind-utils，DEBIAN安装：apt-get -y install dnsutils
+一键脚本修改推荐修改方式：
+
+一键脚本很多都会自带dns服务，会影响流媒体的dns解锁。
+
+修改方式：
+vi /etc/v2ray/config.json
+
+找到DNS
+&amp;quot;dns&amp;quot;: {
+        &amp;quot;servers&amp;quot;: [
+            {
+                &amp;quot;address&amp;quot;: &amp;quot;xxx.xxx.xxx.xxx&amp;quot;,     //此处为支持 Netflix 的代理VPS
+                &amp;quot;port&amp;quot;: 53,
+                &amp;quot;domains&amp;quot;: [
+                    &amp;quot;domain:netflix.com&amp;quot;,
+                    &amp;quot;domain:netflix.net&amp;quot;,
+                    &amp;quot;domain:nflximg.net&amp;quot;,
+                    &amp;quot;domain:nflxvideo.net&amp;quot;,
+                    &amp;quot;domain:nflxso.net&amp;quot;,
+                    &amp;quot;domain:nflxext.com&amp;quot;
+                ]
+            },
+            &amp;quot;localhost&amp;quot;
+        ]
+    }
+
+修改配置完成以后，请重启你的V2RAY服务，或是重启VPS。
+使用分流，让不同的流媒体走不同的DNS
+修改方法：
+&amp;quot;dns&amp;quot;: {
+        &amp;quot;servers&amp;quot;: [
+            {
+                &amp;quot;address&amp;quot;: &amp;quot;支持Netflix的代理VPS&amp;quot;,
+                &amp;quot;port&amp;quot;: 53,
+                &amp;quot;domains&amp;quot;: [
+                    &amp;quot;domain:netflix.com&amp;quot;,
+                    &amp;quot;domain:netflix.net&amp;quot;,
+                    &amp;quot;domain:nflximg.net&amp;quot;,
+                    &amp;quot;domain:nflxvideo.net&amp;quot;,
+                    &amp;quot;domain:nflxso.net&amp;quot;,
+                    &amp;quot;domain:nflxext.com&amp;quot;
+                ]
+            },
+            {
+                &amp;quot;address&amp;quot;: &amp;quot;支持的代理VPS&amp;quot;,
+                &amp;quot;port&amp;quot;: 53,
+                &amp;quot;domains&amp;quot;: [
+                    &amp;quot;domain:gamer2-cds.cdn.hinet.net&amp;quot;,
+                    &amp;quot;domain:gamer-cds.cdn.hinet.net&amp;quot;,
+                    &amp;quot;domain:gamer.com.tw&amp;quot;,
+                    &amp;quot;domain:i2.bahamut.com.tw&amp;quot;,
+                    &amp;quot;domain:app-measurement.com&amp;quot;
+                ]
+            },
+            {
+                &amp;quot;address&amp;quot;: &amp;quot;支持的代理VPS&amp;quot;,
+                &amp;quot;port&amp;quot;: 53,
+                &amp;quot;domains&amp;quot;: [
+                    &amp;quot;domain:bilibili.com&amp;quot;
+                ]
+            },
+            &amp;quot;localhost&amp;quot;
+        ]
+    }
+
 
                                         </div>
                                         
-                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/5/">Read More ~</a>
+                                            <a class="btn btn-text" href="https://zoengzihaam.github.io/post/netflixdns-jie-suo/">Read More ~</a>
                             </div>
                 </div>
             </article>
