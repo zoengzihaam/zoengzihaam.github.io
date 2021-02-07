@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zoengzihaam.github.io</id>
     <title>卷毛</title>
-    <updated>2021-01-14T12:26:29.093Z</updated>
+    <updated>2021-02-07T17:12:40.861Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zoengzihaam.github.io"/>
     <link rel="self" href="https://zoengzihaam.github.io/atom.xml"/>
@@ -119,6 +119,75 @@
             &quot;localhost&quot;
         ]
     }
+</code></pre>
+<h2 id="域名规则">域名规则</h2>
+<h3 id="netflix"><strong>Netflix</strong></h3>
+<pre><code class="language-shell">netflix.com
+netflix.net
+nflximg.net
+nflximg.com
+nflxvideo.net
+nflxso.net
+nflxext.com
+</code></pre>
+<h3 id="spotify"><strong>Spotify</strong></h3>
+<pre><code class="language-shell">scdn.co
+spotify.com
+spoti.fi
+</code></pre>
+<h3 id="bilibili"><strong>bilibili</strong></h3>
+<pre><code class="language-shell">bilibili.com
+</code></pre>
+<h3 id="动画疯"><strong>动画疯</strong></h3>
+<pre><code class="language-shell">gamer-cds.cdn.hinet.net
+gamer2-cds.cdn.hinet.net
+gamer.com.tw
+i2.bahamut.com.tw
+app-measurement.com
+</code></pre>
+<h3 id="line"><strong>Line</strong></h3>
+<pre><code class="language-shell">lin.ee
+line.me
+linenaver.jp
+line-apps.com
+line-cdn.net
+line-scdn.net
+linetv.tw
+cloudfront.net
+</code></pre>
+<h3 id="fox"><strong>Fox+</strong></h3>
+<pre><code class="language-shell">fox.com
+foxdng.com
+foxnow.com
+foxplus.com
+foxplay.com
+</code></pre>
+<h3 id="bbc"><strong>BBC</strong></h3>
+<pre><code class="language-shell">bbc.co
+bbc.com
+co.uk
+llnwd.net
+akamaized.net
+</code></pre>
+<h3 id="hulu"><strong>Hulu</strong></h3>
+<pre><code class="language-shell">hulu.com
+huluim.com
+</code></pre>
+<h3 id="hbo美区"><strong>hbo(美区)</strong></h3>
+<pre><code class="language-shell">hbonow.com
+hbogo.com
+hbomax.com
+hbo.com
+</code></pre>
+<h3 id="disney"><strong>disney</strong></h3>
+<pre><code class="language-shell">disney.com
+disneyjunior.com
+disneyplus.com
+disney-plus.net
+dssott.com
+bamgrid.com
+amazonaws.com
+go.com
 </code></pre>
 ]]></content>
     </entry>
