@@ -120,7 +120,8 @@ code {
 .header .logo_title .title .navbar .normal_nav a {
   color: #666;
   font-weight: 400;
-  font-size: 14px;
+  /* font-size: 14px */
+  background: linear-gradient(180deg, transparent 75%, rgba(139, 149, 159, 0.4) 0) !important;
 }
 .header .logo_title .title .navbar .normal_nav a:active,
 .header .logo_title .title .navbar .normal_nav a:hover {
@@ -790,7 +791,7 @@ pre .cl {
 }
 .search-input {
   position: relative;
-  top: -3px;
+  top: -5px;
   left: -2px;
   width: 160px;
   height: 26px;
@@ -1038,7 +1039,7 @@ div.toc-container > ul > li ul {
   content: "🔍";
   z-index: 999;
   position: fixed;
-  top: 1.2em;
+  top: 1em;
 }
 code[class*=language-],
 pre[class*=language-] {
