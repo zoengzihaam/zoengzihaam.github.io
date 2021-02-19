@@ -973,7 +973,7 @@ pre .cl {
 .toc-container .markdownIt-TOC {
   position: sticky;
   top: 32px;
-  width: 250px;
+  width: 200px;
   font-size: 12px;
   list-style: none;
   padding-left: 0;
