@@ -1031,6 +1031,9 @@ div.toc-container > ul > li > ul li {
 div.toc-container > ul > li ul {
   list-style: decimal;
 }
+div.toc-container > ul > li ul {
+  padding: 0px 0px 0px 25px;
+}
 code[class*=language-],
 pre[class*=language-] {
   color: #657b83;
