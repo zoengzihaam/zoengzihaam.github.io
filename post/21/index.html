@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="没有撤退可言。"><meta charset="UTF-8"><title>GateWay自定义全局GlobalFilter | 卷毛</title>
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="没有撤退可言。"><meta charset="UTF-8"><title>Ubuntu 远程root登录 | 卷毛</title>
 <link href="https://zoengzihaam.github.io/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://zoengzihaam.github.io/media/css/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://zoengzihaam.github.io/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 <script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
 
-<link rel="canonical" href="https://zoengzihaam.github.io/post/13/" />
+<link rel="canonical" href="https://zoengzihaam.github.io/post/21/" />
 </head>
 <body>
 <div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
@@ -23,98 +23,57 @@
 
 <div class="main"><div class="main-inner"><div class="content">
 <article class="post">
-<h2 class="post_title sm_margin"><a>GateWay自定义全局GlobalFilter</a></h2>
+<h2 class="post_title sm_margin"><a>Ubuntu 远程root登录</a></h2>
 <script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
-<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2020-07-06</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://zoengzihaam.github.io/tag/hR2Q3InCJ/" class="tag">spring</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">333字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">2 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2021-04-02</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://zoengzihaam.github.io/tag/BMhg_qYrO/" class="tag">Linux</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">258字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">1 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
 </section>
 
 <div style="display:flex">
 <div class="md_block" id="md_block">
 <div class="round-shape-one"></div>
-<h1 id="gateway自定义全局globalfilter">GateWay自定义全局GlobalFilter</h1>
-<h2 id="1实现两个接口">1.实现两个接口</h2>
-<ul>
-<li>
-<p>GlobalFilter</p>
-<p>用于自定义过滤器，例如进行Token验证</p>
-</li>
-<li>
-<p>Ordered</p>
-<p>Spring提供了Ordered这个接口，来处理相同接口实现类的优先级问题。</p>
-</li>
-</ul>
-<pre><code class="language-Java">import lombok.extern.slf4j.Slf4j;
-import org.springframework.cloud.gateway.filter.GatewayFilterChain;
-import org.springframework.cloud.gateway.filter.GlobalFilter;
-import org.springframework.core.Ordered;
-import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Component;
-import org.springframework.web.server.ServerWebExchange;
-import reactor.core.publisher.Mono;
-
-import java.util.Date;
-
-@Component
-@Slf4j
-public class MyLogGateWayFilter implements GlobalFilter, Ordered {
-
-    @Override
-    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-
-        //打印输出信息
-        log.info(&quot;************come in MyLogGateWayFilter&quot; + new Date());
-
-        //获取request中的参数
-        String name = exchange.getRequest().getQueryParams().getFirst(&quot;name&quot;);
-        //判断参数的信息
-        if(name ==null){
-            log.info(&quot;************用户名为null，非法用户，/(ㄒoㄒ)/~~&quot;);
-            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);
-            return exchange.getResponse().setComplete();
-        }
-
-        return chain.filter(exchange);
-    }
-
-    @Override
-    public int getOrder() {
-        return 0;
-    }
-}
+<h1 id="ubuntu远程root登录">Ubuntu远程root登录</h1>
+<blockquote>
+<p>低价购买了三年的腾讯云vps，尝试远程ssh登录的时候，发现无法使用root用户登录，只能使用默认的用户名，这就大大增加了使用时候的操作步骤，于是就尝试给Ubuntu赋予远程root使用的权限。</p>
+</blockquote>
+<h2 id="增加一个root密码">增加一个root密码</h2>
+<blockquote>
+<p>默认主机是没有root密码，我们这里新增一个root的密码。</p>
+</blockquote>
+<p>建议使用相同但不简单的密码，防止忘记也防止太简单出现数据损失。</p>
+<pre><code class="language-shell">sudo passwd root
 </code></pre>
-<h2 id="2-使用cmd验证">2. 使用CMD验证</h2>
-<ul>
+<p>这里需要输入两次密码，出现修改成功即可。</p>
+<h2 id="修改sshd配置">修改sshd配置</h2>
+<blockquote>
+<p><code>sshd</code>中默认不使用ROOT登录，修改<code>sshd</code>的配置文件来开启一下。</p>
+</blockquote>
+<ol>
 <li>
-<p>遵循过滤器中的规则</p>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706185828.png" alt="image-20200706185828629" loading="lazy"></figure>
+<p>修改<code>sshd</code>的配置文件</p>
+<pre><code class="language-shell">sudo vim /etc/ssh/sshd_config
+</code></pre>
 </li>
 <li>
-<p>不遵循过滤器中的规则</p>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706185856.png" alt="image-20200706185856027" loading="lazy"></figure>
-</li>
-</ul>
-<h2 id="3网页端测试">3.网页端测试</h2>
-<ul>
-<li>
-<p>遵循过滤器中的规则</p>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706185952.png" alt="image-20200706185952065" loading="lazy"></figure>
+<p>修改 <code>PermitRootLogin</code> 的默认参数</p>
+<p>这里我在原属性下面添加相同的属性，保留了原来的配置内容。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20210402163653.png" alt="image-20210402163653587" loading="lazy"></figure>
 </li>
 <li>
-<p>不遵循过滤器中的规则</p>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200706190016.png" alt="image-20200706190016823" loading="lazy"></figure>
+<p>重启<code>ssh</code>服务</p>
+<pre><code class="language-shell">sudo service ssh restart
+</code></pre>
 </li>
-</ul>
-<p>结论：自定义Filter类似SpringMVC中的Filter，GlobalGilter 全局过滤器接口与 GatewayFilter 网关过滤器接口具有相同的方法定义。全局过滤器是一系列特殊的过滤器，会根据条件应用到所有路由中。网关过滤器是更细粒度的过滤器，作用于指定的路由中。</p>
+</ol>
+<p>自此，这台vps主机就可以远程进行root登录。</p>
 
 <span id="footnote"></span>
 <div id = "warn"></div>
 </div>
 <div class="toc-container"><ul class="markdownIt-TOC">
-<li><a href="#gateway%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80globalfilter">GateWay自定义全局GlobalFilter</a>
+<li><a href="#ubuntu%E8%BF%9C%E7%A8%8Broot%E7%99%BB%E5%BD%95">Ubuntu远程root登录</a>
 <ul>
-<li><a href="#1%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AA%E6%8E%A5%E5%8F%A3">1.实现两个接口</a></li>
-<li><a href="#2-%E4%BD%BF%E7%94%A8cmd%E9%AA%8C%E8%AF%81">2. 使用CMD验证</a></li>
-<li><a href="#3%E7%BD%91%E9%A1%B5%E7%AB%AF%E6%B5%8B%E8%AF%95">3.网页端测试</a></li>
+<li><a href="#%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAroot%E5%AF%86%E7%A0%81">增加一个root密码</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9sshd%E9%85%8D%E7%BD%AE">修改sshd配置</a></li>
 </ul>
 </li>
 </ul>
@@ -142,7 +101,7 @@ if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop)
 var list=document.querySelectorAll(".katex");for(var i=0;i<list.length;i++){list[i].style.display="unset"};
 var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
 var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
-content="本文最后更新于2020-07-06，已超过 1 年没有更新，涉及的内容可能已经失效！";var date1="2020-07-06 19:14:01";date1=date1.replace("-","/");var date2=new Date();var date3=date2.getTime()-new Date(date1).getTime();var days=Math.floor(date3/(24*3600*1000));if(days>=365){document.getElementById("warn").innerHTML=content};
+content="本文最后更新于2021-04-02，已超过 1 年没有更新，涉及的内容可能已经失效！";var date1="2021-04-02 16:48:48";date1=date1.replace("-","/");var date2=new Date();var date3=date2.getTime()-new Date(date1).getTime();var days=Math.floor(date3/(24*3600*1000));if(days>=365){document.getElementById("warn").innerHTML=content};
 </script>
 <style>#magnifyImg{position:fixed;left:0;top:0;text-align:center;width:100%;display:none;z-index:9999}#magnifyImg img{object-fit:contain;background:#eaecef;padding:15px;border-radius:10px;height:auto;width:auto;vertical-align:middle}</style>
 <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a><div class="footer animated fadeInDown"><div class="site_footer"><div class="mysocials"><div class="my_socials"></div></div><div class="copyright"id="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Copyright © 2018-2020 <a href="https://zoengzihaam.github.io" style="margin:0;">卷毛</a>.</div>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zoengzihaam.github.io</id>
     <title>卷毛</title>
-    <updated>2021-04-02T07:52:35.614Z</updated>
+    <updated>2021-04-02T08:49:56.508Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zoengzihaam.github.io"/>
     <link rel="self" href="https://zoengzihaam.github.io/atom.xml"/>
@@ -10,6 +10,48 @@
     <logo>https://zoengzihaam.github.io/images/avatar.png</logo>
     <icon>https://zoengzihaam.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 卷毛</rights>
+    <entry>
+        <title type="html"><![CDATA[Ubuntu 远程root登录]]></title>
+        <id>https://zoengzihaam.github.io/post/21/</id>
+        <link href="https://zoengzihaam.github.io/post/21/">
+        </link>
+        <updated>2021-04-02T08:48:48.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="ubuntu远程root登录">Ubuntu远程root登录</h1>
+<blockquote>
+<p>低价购买了三年的腾讯云vps，尝试远程ssh登录的时候，发现无法使用root用户登录，只能使用默认的用户名，这就大大增加了使用时候的操作步骤，于是就尝试给Ubuntu赋予远程root使用的权限。</p>
+</blockquote>
+<h2 id="增加一个root密码">增加一个root密码</h2>
+<blockquote>
+<p>默认主机是没有root密码，我们这里新增一个root的密码。</p>
+</blockquote>
+<p>建议使用相同但不简单的密码，防止忘记也防止太简单出现数据损失。</p>
+<pre><code class="language-shell">sudo passwd root
+</code></pre>
+<p>这里需要输入两次密码，出现修改成功即可。</p>
+<h2 id="修改sshd配置">修改sshd配置</h2>
+<blockquote>
+<p><code>sshd</code>中默认不使用ROOT登录，修改<code>sshd</code>的配置文件来开启一下。</p>
+</blockquote>
+<ol>
+<li>
+<p>修改<code>sshd</code>的配置文件</p>
+<pre><code class="language-shell">sudo vim /etc/ssh/sshd_config
+</code></pre>
+</li>
+<li>
+<p>修改 <code>PermitRootLogin</code> 的默认参数</p>
+<p>这里我在原属性下面添加相同的属性，保留了原来的配置内容。</p>
+<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20210402163653.png" alt="image-20210402163653587" loading="lazy"></figure>
+</li>
+<li>
+<p>重启<code>ssh</code>服务</p>
+<pre><code class="language-shell">sudo service ssh restart
+</code></pre>
+</li>
+</ol>
+<p>自此，这台vps主机就可以远程进行root登录。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于WIN10下启动应用程序出现MSVCR110.dll缺失的解决办法]]></title>
         <id>https://zoengzihaam.github.io/post/20/</id>
@@ -963,34 +1005,6 @@ RUN yum install -y curl
 ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;,&quot;-i&quot;, &quot;https://www.baidu.com/&quot; ]
 </code></pre>
 <p>所以，在实际应用中，是使用<code>CMD</code>还是<code>ENTRYPOINT</code>保留指令，要根据具体的业务要求。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[在VMware Workstation上安装CentOS7的网络问题]]></title>
-        <id>https://zoengzihaam.github.io/post/9/</id>
-        <link href="https://zoengzihaam.github.io/post/9/">
-        </link>
-        <updated>2020-06-09T06:20:10.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="配置网络">配置网络</h2>
-<h3 id="虚拟机centos的网络设置">虚拟机CentOS的网络设置</h3>
-<h4 id="1-将网络适配器设置为nat模式">1. 将网络适配器设置为<code>NAT模式</code></h4>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609140748.png" alt="image-20200609140748138" loading="lazy"></figure>
-<h4 id="2-linux中网络设置">2. Linux中网络设置</h4>
-<p><code>cd /etc/sysconfig/network-scripts/</code>，进入CentOS7的网络配置文件下，找到对应的网卡设置，我这里的网卡是<code>ifcfg-ens32</code>，每个人的网卡名称可能不一样，不用在意。</p>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609141501.png" alt="image-20200609141501373" loading="lazy"></figure>
-<p><code>vim ifcfg-ens32</code> ，打开指定的网卡配置文件，如果系统没有安装 vim，使用 vi 打开即可。</p>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609141842.png" alt="image-20200609141842892" loading="lazy"></figure>
-<p>添加的<code>ip</code>、<code>子网掩码</code>、<code>网关</code>，在VMware Workstation中的虚拟网络编辑器中查看。</p>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609142048.png" alt="image-20200609142048076" loading="lazy"></figure>
-<p>选择<code>VMnet8</code>，然后<code>NAT设置</code></p>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609142226.png" alt="image-20200609142226380" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609142259.png" alt="image-20200609142259233" loading="lazy"></figure>
-<p><strong>IPADDR</strong>：为上方的子网IP，建议IP设置为<code>XXX.XXX.XXX.200~XXX.XXX.XXX.250</code>之间</p>
-<p><strong>PREFIXO</strong>：为上方子网掩码，255.255.255.0即为24</p>
-<p><strong>GATEWAY</strong>：为上方网关IP，对应填上即可。</p>
-<p><strong>DNS1</strong>：8.8.8.8</p>
-<p><strong>DNS2</strong>：8.8.4.4</p>
-<p>这里DNS都设置为谷歌的DNS，正常解析即可，其他DNS也可。</p>
 ]]></content>
     </entry>
 </feed>
