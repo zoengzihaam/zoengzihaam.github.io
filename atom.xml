@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zoengzihaam.github.io</id>
     <title>卷毛</title>
-    <updated>2021-04-02T08:49:56.508Z</updated>
+    <updated>2021-05-24T17:49:24.858Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zoengzihaam.github.io"/>
     <link rel="self" href="https://zoengzihaam.github.io/atom.xml"/>
@@ -10,6 +10,26 @@
     <logo>https://zoengzihaam.github.io/images/avatar.png</logo>
     <icon>https://zoengzihaam.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 卷毛</rights>
+    <entry>
+        <title type="html"><![CDATA[视频硬解图示]]></title>
+        <id>https://zoengzihaam.github.io/post/shi-pin-ying-jie-tu-shi/</id>
+        <link href="https://zoengzihaam.github.io/post/shi-pin-ying-jie-tu-shi/">
+        </link>
+        <updated>2021-05-24T17:48:47.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>由于现使用Android TV盒子过于卡顿，于是购买HTPC 小主机想法油然而生，主要用来不时之需来使用一下，毕竟APPLE TV 4K(二代)已经在路上。主要用途还是看视频，能够轻松胜任视频硬解，看到贴吧有大佬制作了一个显卡硬解表格，由此再集合一下。</p>
+</blockquote>
+<p><strong>大佬原帖：</strong> <a href="https://tieba.baidu.com/p/6248044721?fid=352902&amp;pid=127430527352&amp;red_tag=1819330808#127430527352">原帖</a></p>
+<h2 id="核显">核显</h2>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/5762bfa1cd11728b46e29509c7fcc3cec2fd2cab.png" alt="核显" loading="lazy"></figure>
+<h2 id="amd显卡">AMD显卡</h2>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/50ead13f8794a4c271ecfe0001f41bd5ac6e39ab.png" alt="AMD显卡" loading="lazy"></figure>
+<h2 id="nvidia显卡">NVIDIA显卡</h2>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/5762bfa1cd11728b47e99409c7fcc3cec2fd2cb2.png" alt="NVIDIA显卡" loading="lazy"></figure>
+<h2 id="核显对应的部分cpu">核显对应的部分CPU</h2>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/1149d10735fae6cd657bb24a00b30f2443a70fab.png" alt="CPU" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Ubuntu 远程root登录]]></title>
         <id>https://zoengzihaam.github.io/post/21/</id>
@@ -928,83 +948,6 @@ public String getPayementLB(){
 <figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625180221.png" alt="image-20200625180221054" loading="lazy"></figure>
 <figure data-type="image" tabindex="5"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625180244.png" alt="image-20200625180244048" loading="lazy"></figure>
 <p>​	根据以上调用，后台也打印出相应的调用信息。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docker中 CMD 与 ENTRYPOINT 保留指令的区别]]></title>
-        <id>https://zoengzihaam.github.io/post/10/</id>
-        <link href="https://zoengzihaam.github.io/post/10/">
-        </link>
-        <updated>2020-06-09T13:52:56.000Z</updated>
-        <content type="html"><![CDATA[<blockquote>
-<p>编写Dockerfile时，时常看到最后会看到CMD或者ENTRYPOINT 的保留指令，但是他们的意义都为：指定一个容器启动时要运行的命令，那么它们之间的差异在哪里？</p>
-</blockquote>
-<h2 id="使用curl命令来说明">使用curl命令来说明</h2>
-<h3 id="首先编写两个dockerfile">首先编写两个Dockerfile</h3>
-<ol>
-<li>使用<code>CMD</code>保留指令。</li>
-</ol>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://www.baidu.com/&quot; ]
-</code></pre>
-<p>这里 Dockerfile 的名字要求小写，否则会报错<code>invalid argument &quot;cmdCentos&quot; for &quot;-t, --tag&quot; flag: invalid reference format: repository name must be lowercase See 'docker build --help'.</code></p>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213217.png" alt="image-20200609213217668" loading="lazy"></figure>
-<ol start="2">
-<li>使用<code>ENTRYPOINT</code>保留指令。</li>
-</ol>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://www.baidu.com/&quot; ]
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213320.png" alt="image-20200609213320960" loading="lazy"></figure>
-<h3 id="在docker中进行build进行构建一个新的镜像">在docker中进行build进行构建一个新的镜像</h3>
-<ol>
-<li>
-<p>构建<code>CMD</code>保留指令的Dockerfile。</p>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213449.png" alt="image-20200609213449579" loading="lazy"></figure>
-</li>
-<li>
-<p>构建<code>ENTRYPOINT</code>保留指令的Dockerfile。</p>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213554.png" alt="image-20200609213553986" loading="lazy"></figure>
-</li>
-</ol>
-<h3 id="运行两个镜像进行对比">运行两个镜像进行对比</h3>
-<ol>
-<li>
-<p>运行<code>CMD</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213732.png" alt="image-20200609213732383" loading="lazy"></figure>
-</li>
-<li>
-<p>运行<code>ENTRYPOINT</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="6"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213855.png" alt="image-20200609213855288" loading="lazy"></figure>
-</li>
-</ol>
-<p>这个时候我们发现，两个镜像运行起来没有任何区别，但是<strong>重点来了</strong>！当我们需要<strong>对镜像启动时要运行的命令进行增强</strong>的时候。</p>
-<p>比如我们还想获取指定网站的<code>头信息</code>。</p>
-<ol start="3">
-<li>
-<p>运行增强后的<code>CMD</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="7"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609214241.png" alt="image-20200609214241092" loading="lazy"></figure>
-</li>
-<li>
-<p>运行增强后的<code>ENTRYPOINT</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="8"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609214443.png" alt="image-20200609214443164" loading="lazy"></figure>
-</li>
-</ol>
-<h3 id="总结">总结</h3>
-<p>由上述的案例，我们不难发现，在执行Dockerfile中，如果使用了<code>CMD</code>保留指令，那么在执行镜像的时候，我们在其启动命令后面添加<code>OPTION</code>选项的时候，将会覆盖Dockerfile中的上一句指令，造成运行失败。例如：</p>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://www.baidu.com/&quot; ]
-CMD -i
-</code></pre>
-<p>如果使用<code>ENTRYPOINT</code>保留指令，那么在执行镜像的时候，我们在其启动命令后面添加<code>OPTION</code>选项的时候，会对运行的命令进行<code>“增强”</code>。例如：</p>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;,&quot;-i&quot;, &quot;https://www.baidu.com/&quot; ]
-</code></pre>
-<p>所以，在实际应用中，是使用<code>CMD</code>还是<code>ENTRYPOINT</code>保留指令，要根据具体的业务要求。</p>
 ]]></content>
     </entry>
 </feed>

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="没有撤退可言。"><meta charset="UTF-8"><title>Docker中 CMD 与 ENTRYPOINT 保留指令的区别 | 卷毛</title>
+<link rel="shortcut icon" href="https://zoengzihaam.github.io/favicon.ico" type="image/x-icon" /><meta name="viewport"content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/><meta name="apple-mobile-web-app-capable"content="yes"/><meta name="apple-mobile-web-app-status-bar-style"content="black"/><meta name="format-detection"content="telephone=no"/><meta name="renderer"content="webkit"><meta name="description"content="没有撤退可言。"><meta charset="UTF-8"><title>视频硬解图示 | 卷毛</title>
 <link href="https://zoengzihaam.github.io/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://zoengzihaam.github.io/media/css/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://zoengzihaam.github.io/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
 <script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
 
-<link rel="canonical" href="https://zoengzihaam.github.io/post/10/" />
+<link rel="canonical" href="https://zoengzihaam.github.io/post/shi-pin-ying-jie-tu-shi/" />
 </head>
 <body>
 <div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
@@ -23,83 +23,26 @@
 
 <div class="main"><div class="main-inner"><div class="content">
 <article class="post">
-<h2 class="post_title sm_margin"><a>Docker中 CMD 与 ENTRYPOINT 保留指令的区别</a></h2>
+<h2 class="post_title sm_margin"><a>视频硬解图示</a></h2>
 <script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
-<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2020-06-09</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://zoengzihaam.github.io/tag/bV_DFMXGZ/" class="tag">Docker</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">521字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">3 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2021-05-25</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px"></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">118字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">1 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
 </section>
 
 <div style="display:flex">
 <div class="md_block" id="md_block">
 <div class="round-shape-one"></div>
 <blockquote>
-<p>编写Dockerfile时，时常看到最后会看到CMD或者ENTRYPOINT 的保留指令，但是他们的意义都为：指定一个容器启动时要运行的命令，那么它们之间的差异在哪里？</p>
+<p>由于现使用Android TV盒子过于卡顿，于是购买HTPC 小主机想法油然而生，主要用来不时之需来使用一下，毕竟APPLE TV 4K(二代)已经在路上。主要用途还是看视频，能够轻松胜任视频硬解，看到贴吧有大佬制作了一个显卡硬解表格，由此再集合一下。</p>
 </blockquote>
-<h2 id="使用curl命令来说明">使用curl命令来说明</h2>
-<h3 id="首先编写两个dockerfile">首先编写两个Dockerfile</h3>
-<ol>
-<li>使用<code>CMD</code>保留指令。</li>
-</ol>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://www.baidu.com/&quot; ]
-</code></pre>
-<p>这里 Dockerfile 的名字要求小写，否则会报错<code>invalid argument &quot;cmdCentos&quot; for &quot;-t, --tag&quot; flag: invalid reference format: repository name must be lowercase See 'docker build --help'.</code></p>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213217.png" alt="image-20200609213217668" loading="lazy"></figure>
-<ol start="2">
-<li>使用<code>ENTRYPOINT</code>保留指令。</li>
-</ol>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://www.baidu.com/&quot; ]
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213320.png" alt="image-20200609213320960" loading="lazy"></figure>
-<h3 id="在docker中进行build进行构建一个新的镜像">在docker中进行build进行构建一个新的镜像</h3>
-<ol>
-<li>
-<p>构建<code>CMD</code>保留指令的Dockerfile。</p>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213449.png" alt="image-20200609213449579" loading="lazy"></figure>
-</li>
-<li>
-<p>构建<code>ENTRYPOINT</code>保留指令的Dockerfile。</p>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213554.png" alt="image-20200609213553986" loading="lazy"></figure>
-</li>
-</ol>
-<h3 id="运行两个镜像进行对比">运行两个镜像进行对比</h3>
-<ol>
-<li>
-<p>运行<code>CMD</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213732.png" alt="image-20200609213732383" loading="lazy"></figure>
-</li>
-<li>
-<p>运行<code>ENTRYPOINT</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="6"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609213855.png" alt="image-20200609213855288" loading="lazy"></figure>
-</li>
-</ol>
-<p>这个时候我们发现，两个镜像运行起来没有任何区别，但是<strong>重点来了</strong>！当我们需要<strong>对镜像启动时要运行的命令进行增强</strong>的时候。</p>
-<p>比如我们还想获取指定网站的<code>头信息</code>。</p>
-<ol start="3">
-<li>
-<p>运行增强后的<code>CMD</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="7"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609214241.png" alt="image-20200609214241092" loading="lazy"></figure>
-</li>
-<li>
-<p>运行增强后的<code>ENTRYPOINT</code>保留指令的镜像。</p>
-<figure data-type="image" tabindex="8"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200609214443.png" alt="image-20200609214443164" loading="lazy"></figure>
-</li>
-</ol>
-<h3 id="总结">总结</h3>
-<p>由上述的案例，我们不难发现，在执行Dockerfile中，如果使用了<code>CMD</code>保留指令，那么在执行镜像的时候，我们在其启动命令后面添加<code>OPTION</code>选项的时候，将会覆盖Dockerfile中的上一句指令，造成运行失败。例如：</p>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://www.baidu.com/&quot; ]
-CMD -i
-</code></pre>
-<p>如果使用<code>ENTRYPOINT</code>保留指令，那么在执行镜像的时候，我们在其启动命令后面添加<code>OPTION</code>选项的时候，会对运行的命令进行<code>“增强”</code>。例如：</p>
-<pre><code class="language-shell">FROM centos
-RUN yum install -y curl
-ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;,&quot;-i&quot;, &quot;https://www.baidu.com/&quot; ]
-</code></pre>
-<p>所以，在实际应用中，是使用<code>CMD</code>还是<code>ENTRYPOINT</code>保留指令，要根据具体的业务要求。</p>
+<p><strong>大佬原帖：</strong> <a href="https://tieba.baidu.com/p/6248044721?fid=352902&amp;pid=127430527352&amp;red_tag=1819330808#127430527352">原帖</a></p>
+<h2 id="核显">核显</h2>
+<figure data-type="image" tabindex="1"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/5762bfa1cd11728b46e29509c7fcc3cec2fd2cab.png" alt="核显" loading="lazy"></figure>
+<h2 id="amd显卡">AMD显卡</h2>
+<figure data-type="image" tabindex="2"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/50ead13f8794a4c271ecfe0001f41bd5ac6e39ab.png" alt="AMD显卡" loading="lazy"></figure>
+<h2 id="nvidia显卡">NVIDIA显卡</h2>
+<figure data-type="image" tabindex="3"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/5762bfa1cd11728b47e99409c7fcc3cec2fd2cb2.png" alt="NVIDIA显卡" loading="lazy"></figure>
+<h2 id="核显对应的部分cpu">核显对应的部分CPU</h2>
+<figure data-type="image" tabindex="4"><img src="https://cdn.jsdelivr.net/gh/zoengzihaam/ImgBed/images/1149d10735fae6cd657bb24a00b30f2443a70fab.png" alt="CPU" loading="lazy"></figure>
 
 <span id="footnote"></span>
 <div id = "warn"></div>
@@ -107,14 +50,10 @@ ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;,&quot;-i&quot;, &quot;https://www.
 <div class="toc-container"><ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E4%BD%BF%E7%94%A8curl%E5%91%BD%E4%BB%A4%E6%9D%A5%E8%AF%B4%E6%98%8E">使用curl命令来说明</a>
-<ul>
-<li><a href="#%E9%A6%96%E5%85%88%E7%BC%96%E5%86%99%E4%B8%A4%E4%B8%AAdockerfile">首先编写两个Dockerfile</a></li>
-<li><a href="#%E5%9C%A8docker%E4%B8%AD%E8%BF%9B%E8%A1%8Cbuild%E8%BF%9B%E8%A1%8C%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E9%95%9C%E5%83%8F">在docker中进行build进行构建一个新的镜像</a></li>
-<li><a href="#%E8%BF%90%E8%A1%8C%E4%B8%A4%E4%B8%AA%E9%95%9C%E5%83%8F%E8%BF%9B%E8%A1%8C%E5%AF%B9%E6%AF%94">运行两个镜像进行对比</a></li>
-<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
-</ul>
-</li>
+<li><a href="#%E6%A0%B8%E6%98%BE">核显</a></li>
+<li><a href="#amd%E6%98%BE%E5%8D%A1">AMD显卡</a></li>
+<li><a href="#nvidia%E6%98%BE%E5%8D%A1">NVIDIA显卡</a></li>
+<li><a href="#%E6%A0%B8%E6%98%BE%E5%AF%B9%E5%BA%94%E7%9A%84%E9%83%A8%E5%88%86cpu">核显对应的部分CPU</a></li>
 </ul>
 </li>
 </ul>
@@ -142,7 +81,7 @@ if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop)
 var list=document.querySelectorAll(".katex");for(var i=0;i<list.length;i++){list[i].style.display="unset"};
 var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
 var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
-content="本文最后更新于2020-06-09，已超过 1 年没有更新，涉及的内容可能已经失效！";var date1="2020-06-09 21:52:56";date1=date1.replace("-","/");var date2=new Date();var date3=date2.getTime()-new Date(date1).getTime();var days=Math.floor(date3/(24*3600*1000));if(days>=365){document.getElementById("warn").innerHTML=content};
+content="本文最后更新于2021-05-25，已超过 1 年没有更新，涉及的内容可能已经失效！";var date1="2021-05-25 01:48:47";date1=date1.replace("-","/");var date2=new Date();var date3=date2.getTime()-new Date(date1).getTime();var days=Math.floor(date3/(24*3600*1000));if(days>=365){document.getElementById("warn").innerHTML=content};
 </script>
 <style>#magnifyImg{position:fixed;left:0;top:0;text-align:center;width:100%;display:none;z-index:9999}#magnifyImg img{object-fit:contain;background:#eaecef;padding:15px;border-radius:10px;height:auto;width:auto;vertical-align:middle}</style>
 <a id="scrollUp" href="#top" style="position: fixed; z-index: 2147483647; display: block;"></a><div class="footer animated fadeInDown"><div class="site_footer"><div class="mysocials"><div class="my_socials"></div></div><div class="copyright"id="copyright">Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>Copyright © 2018-2020 <a href="https://zoengzihaam.github.io" style="margin:0;">卷毛</a>.</div>
