@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zoengzihaam.github.io</id>
     <title>卷毛</title>
-    <updated>2021-05-24T17:49:24.858Z</updated>
+    <updated>2021-06-28T07:55:38.355Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zoengzihaam.github.io"/>
     <link rel="self" href="https://zoengzihaam.github.io/atom.xml"/>
@@ -10,6 +10,99 @@
     <logo>https://zoengzihaam.github.io/images/avatar.png</logo>
     <icon>https://zoengzihaam.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 卷毛</rights>
+    <entry>
+        <title type="html"><![CDATA[快速搭建豆瓣刮削器代理]]></title>
+        <id>https://zoengzihaam.github.io/post/kuai-su-da-jian-dou-ban-gua-xue-qi-dai-li/</id>
+        <link href="https://zoengzihaam.github.io/post/kuai-su-da-jian-dou-ban-gua-xue-qi-dai-li/">
+        </link>
+        <updated>2021-06-28T07:54:55.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>由于公用的搜刮器用的是同一个代理，随着大量的用户访问，导致代理挂了，搭建自己的代理实现搜刮自由。</p>
+</blockquote>
+<h2 id="在cloudflare建立workers应用">在cloudflare建立<code>workers</code>应用</h2>
+<ol>
+<li>
+<p>打开 https://dash.cloudflare.com/sign-up，注册自己的账号。</p>
+</li>
+<li>
+<p>在个人主页中，右侧点击建立“workers”应用。</p>
+</li>
+<li>
+<p>点击“创建worker”。</p>
+</li>
+<li>
+<p>删除内置代码，复制下面的内容。</p>
+</li>
+</ol>
+<pre><code class="language-shell">addEventListener('fetch', event =&gt; {
+event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+targetUrl = request.url.split('-----')[1]
+return await fetch(targetUrl)
+}
+</code></pre>
+<ol start="5">
+<li>点击“保存并部署”。</li>
+</ol>
+<p><strong>PS</strong>:可以workers可以自定义名称，后面要使用。</p>
+<h2 id="群晖ssh安装">群晖SSH安装</h2>
+<pre><code class="language-shell">安装：
+
+1. ssh 登录群晖系统
+2. 执行wget https://raw.githubusercontent.com/jswh/synology_video_station_douban_plugin/master/install.sh
+3. 执行sudo bash install.sh uninstall （第一次安装可以跳过这个步骤）
+4. 执行sudo bash install.sh install 'http://douban.abc.workers.dev'
+http://douban.abc.workers.dev 为上方workers部署到的域名地址
+
+卸载
+
+1. ssh 登录群晖系统
+2. 执行wget https://raw.githubusercontent.com/jswh/synology_video_station_douban_plugin/master/install.sh
+3. 执行sudo bash install.sh uninstall
+</code></pre>
+<p>更改演员表中英文为中文</p>
+<ol>
+<li>
+<p>找到douban.php文件</p>
+<pre><code class="language-shell">douban.php在以下文件夹中
+/var/packages/VideoStation/target/plugins/syno_file_assets
+</code></pre>
+</li>
+<li>
+<p>添加替换代码</p>
+<pre><code class="language-shell">foreach ($movie_data-&gt;{$fn}() as $item) {
+        if (!in_array($item['name'], $data[$key])) {
+        	#在此位置添加以下代码
+        	$item['name']= explode(&quot; &quot;, $item['name']);
+             array_push($data[$key], format_the_name($item['name']));
+        }
+        }
+</code></pre>
+</li>
+</ol>
+<h2 id="群晖访问github">群晖访问GitHub</h2>
+<blockquote>
+<p>上方下载脚本的时候，如果访问不了GitHub，解决方式是以 root 权限修改群晖的 hosts 文件，重新指向刮削器可以正常访问的 IP 地址即可。</p>
+</blockquote>
+<ol>
+<li>
+<p>首先先用 SSH 工具以 root 权限登录群晖。然后输入<code>vim /etc/hosts</code>打开 hosts 文件</p>
+</li>
+<li>
+<p>英文输入法下在键盘上按下<code>i</code>键进入编辑模式，然后添加以下内容</p>
+<pre><code class="language-shell">140.82.114.3 github.com
+185.199.108.153 assets-cdn.github.com
+199.232.69.194 github.global.ssl.fastly.net
+</code></pre>
+</li>
+<li>
+<p>然后按键盘上的<code>ESC</code>键退出编辑，再输入<code>:wq</code> 保存并退出编辑器。</p>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[视频硬解图示]]></title>
         <id>https://zoengzihaam.github.io/post/shi-pin-ying-jie-tu-shi/</id>
@@ -819,135 +912,6 @@ predicates:
 <h4 id="8path">8.Path</h4>
 <h4 id="9query">9.Query</h4>
 <h4 id="10weight">10.Weight</h4>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[参考RoundRobinRule代码模拟负载均衡]]></title>
-        <id>https://zoengzihaam.github.io/post/11/</id>
-        <link href="https://zoengzihaam.github.io/post/11/">
-        </link>
-        <updated>2020-06-25T10:12:34.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="参考roundrobinrule代码模拟负载均衡">参考RoundRobinRule代码模拟负载均衡</h1>
-<h2 id="1定义一个loadbalancer接口">1.定义一个LoadBalancer接口</h2>
-<ul>
-<li>获取服务器集群上能够提供服务的机器数量</li>
-</ul>
-<pre><code class="language-java">public interface Loadbalancer {
-    /**
-     * 获取服务器集群上能够提供服务的机器数量
-     * @param serviceInstances
-     * @return
-     */
-    ServiceInstance instances(List&lt;ServiceInstance&gt; serviceInstances);
-}
-</code></pre>
-<h2 id="2实现loadbalancer接口中的方法">2.实现LoadBalancer接口中的方法</h2>
-<ul>
-<li>利用自旋锁，创建获取当前服务调用是第几次访问的方法</li>
-<li>实现接口中获取提供服务机器数量的方法，模拟负载均衡算法来达到负载调用服务。</li>
-</ul>
-<pre><code class="language-java">/**
- * ClassName: MyLB
- * Description: 参考RoundRobinRule代码模拟负载均衡
- * Author: SUGAR
- * Date: 2020/6/25 16:09
- * Version: 1.0
- **/
-@Component
-public class MyLB implements Loadbalancer{
-
-    private AtomicInteger atomicInteger = new AtomicInteger(0);
-
-    /**
-     * 获取当前服务调用是第几次访问
-     * @return
-     */
-    public final int getAndIncrement(){
-        int current;
-        int next;
-
-        do {
-            current = this.atomicInteger.get();
-            next = current &gt;= 2147483647 ? 0 : current + 1;
-        }while (!this.atomicInteger.compareAndSet(current,next));
-        System.out.println(&quot;*****访问第&quot; + next + &quot;次！*****&quot;);
-        return next;
-    }
-
-    /**
-     * 根据第几次访问，模拟负载均衡算法来达到负载调用服务
-     * 负载均衡算法：rest接口第几次请求数 % 服务器集群总数量 = 实际调用服务器位置下标
-     * 每次服务启动后rest接口计数从1开始
-     * @param serviceInstances
-     * @return
-     */
-    @Override
-    public ServiceInstance instances(List&lt;ServiceInstance&gt; serviceInstances) {
-
-        int index = getAndIncrement() % serviceInstances.size();
-
-        return serviceInstances.get(index);
-    }
-}
-</code></pre>
-<h2 id="3取消loadbalanced注解">3.取消LoadBalanced注解</h2>
-<ul>
-<li>取消ApplicationContextConfig中RestTemplate的get方法的LoadBalanced注解，使用自己模拟的负载均衡。</li>
-</ul>
-<pre><code class="language-java">@Configuration
-public class ApplicationContextConfig {
-
-    @Bean
-//    @LoadBalanced 使用自己模拟的负载均衡的方法
-    public RestTemplate getRestTemplate(){
-        return new RestTemplate();
-    }
-}
-</code></pre>
-<h2 id="4添加服务提供商提供的controller方法">4.添加服务提供商提供的controller方法</h2>
-<ul>
-<li>添加一个获取当前服务提供者端口的方法，用来负载均衡。</li>
-</ul>
-<pre><code class="language-java">@GetMapping(value = &quot;/payment/lb&quot;)
-public String getPaymentLB() {
-    return serverPort;
-}
-</code></pre>
-<p><font style="color:red"><strong>注：</strong></font>这里的方法添加到提供商的controller中。</p>
-<h2 id="5调用者添加controller方法">5.调用者添加controller方法</h2>
-<ul>
-<li>调用者controller添加调用服务提供商的方法，测试负载均衡</li>
-</ul>
-<pre><code class="language-java">@GetMapping(value = &quot;/consumer/payment/lb&quot;)
-public String getPayementLB(){
-    List&lt;ServiceInstance&gt; instances = discoveryClient.getInstances(&quot;CLOUD-PAYMENT-SERVICE&quot;);
-    //判断服务是否为有效服务
-    if(instances == null || instances.size() &lt;= 0){
-        return null;
-    }
-
-    ServiceInstance serviceInstance = loadbalancer.instances(instances);
-    URI uri = serviceInstance.getUri();
-
-    return restTemplate.getForObject(uri + &quot;/payment/lb&quot;,String.class);
-}
-</code></pre>
-<h2 id="6测试">6.测试</h2>
-<ul>
-<li>启动对应的服务</li>
-</ul>
-<figure data-type="image" tabindex="1"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625175834.png" alt="image-20200625175834663" loading="lazy"></figure>
-<ul>
-<li>查看是否启动成功（模拟提供者集群以及服务器集群）</li>
-</ul>
-<figure data-type="image" tabindex="2"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625180016.png" alt="image-20200625180016280" loading="lazy"></figure>
-<ul>
-<li>模拟调用者访问接口</li>
-</ul>
-<figure data-type="image" tabindex="3"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625180207.png" alt="image-20200625180207309" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625180221.png" alt="image-20200625180221054" loading="lazy"></figure>
-<figure data-type="image" tabindex="5"><img src="https://gitee.com/zoengzihaam/ImgBed/raw/master/images/20200625180244.png" alt="image-20200625180244048" loading="lazy"></figure>
-<p>​	根据以上调用，后台也打印出相应的调用信息。</p>
 ]]></content>
     </entry>
 </feed>
